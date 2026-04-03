@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
         hostname: "image.jimcdn.com",
       },
       {
+        protocol: "https",
+        hostname: "cds-api.cod-st.com",
+      },
+      {
         protocol: "http",
         hostname: "127.0.0.1",
         port: "1338",
