@@ -1,7 +1,6 @@
 import { PropertyCard } from "@/components/property-card";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { propertyGroups } from "@/data/properties";
 import { getFeaturedProperties, getProperties } from "@/lib/properties";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -31,32 +30,10 @@ export async function PropertyShowcase() {
         <Reveal>
           <SectionHeading
             eyebrow="Immobilien"
-            title="Aktuelle Häuser, Wohnungen und Neubauprojekte aus dem bestehenden CDS-IMMO Portfolio."
-            description="Für die Preview greifen wir bereits auf reale Immobilien und Projekte aus dem bisherigen Bestand zurück. So kann die spätere Strapi-Pflege direkt auf einer klaren Struktur aufbauen."
+            title="Ausgewählte Immobilien aus dem aktuellen CDS-IMMO Portfolio an der Costa del Sol."
+            description="Vom strandnahen Apartment bis zur Villa mit Meerblick sehen Sie hier einen ersten Auszug aktueller Objekte aus verschiedenen Lagen der Costa del Sol."
             wide
           />
-        </Reveal>
-
-        <Reveal delay={0.05}>
-          <div className="mt-10 flex flex-wrap gap-3">
-            {propertyGroups.map((group) => {
-              const count = properties.filter(
-                (property) => property.group === group.id,
-              ).length;
-
-              return (
-                <span
-                  key={group.id}
-                  className="rounded-full border border-[#183f55]/10 bg-white px-4 py-3 text-sm text-[#35505f]"
-                >
-                  <span className="font-semibold text-[#15384d]">
-                    {group.shortLabel}
-                  </span>{" "}
-                  · {count} Einträge
-                </span>
-              );
-            })}
-          </div>
         </Reveal>
 
         <div className="mt-14 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">

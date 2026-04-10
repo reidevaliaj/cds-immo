@@ -1,4 +1,4 @@
-import heroImage from "@/assets/hero.jpg";
+import heroImage from "@/assets/hero2.jpg";
 import { PropertyShowcase } from "@/components/property-showcase";
 import { Reveal } from "@/components/reveal";
 import { ScrollStory } from "@/components/scroll-story";
@@ -161,9 +161,9 @@ export default async function Home() {
         <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
           <Reveal>
             <SectionHeading
-              eyebrow="Kundenstimmen"
-              title="Sechs Vorschau-Stimmen, die zeigen, worauf Käufer und Auswanderer bei CDS-IMMO Wert legen."
-              description="Für die erste Präsentation setzen wir auf realistisch formulierte Erfahrungsbilder: persönliche Begleitung, ehrliche Einschätzung und Hilfe über die reine Immobiliensuche hinaus."
+              eyebrow="Vertrauen"
+              title="Was Käufer und Auswanderer bei CDS-IMMO besonders schätzen."
+              description="Persönliche Begleitung, klare Einschätzungen und Hilfe über die reine Immobiliensuche hinaus sind für viele Interessenten die Punkte, die am meisten Sicherheit geben."
               align="center"
             />
           </Reveal>

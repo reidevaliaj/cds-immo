@@ -7,65 +7,66 @@ import stepImage5 from "@/assets/5.png";
 import stepImage6 from "@/assets/6.png";
 import { Reveal } from "@/components/reveal";
 import {
-  Building2,
-  Landmark,
   Scale,
+  Handshake,
+  FileText,
+  HousePlus,
 } from "lucide-react";
 import Image from "next/image";
 
 const journeySteps = [
   {
-    title: "Erstgespraech",
-    text: "Wir klaeren in Deutschland Ihre Wuensche, Ihr Budget und wie Ihr Plan fuer Spanien aussieht.",
+    title: "Erstgespräch",
+    text: "Wir klären in Deutschland Ihre Wünsche, Ihr Budget und wie Ihr Plan für Spanien aussieht.",
     image: stepImage1,
   },
   {
-    title: "Region auswaehlen",
-    text: "Gemeinsam definieren wir, ob Malaga, Mijas, Marbella oder eine andere Lage am besten passt.",
+    title: "Region auswählen",
+    text: "Gemeinsam definieren wir, ob Málaga, Mijas, Marbella oder eine andere Lage am besten passt.",
     image: stepImage2,
   },
   {
     title: "Immobilien finden",
-    text: "Passende Haeuser, Wohnungen oder Neubauten werden gezielt statt wahllos zusammengestellt.",
+    text: "Passende Häuser, Wohnungen oder Neubauten werden gezielt statt wahllos zusammengestellt.",
     image: stepImage3,
   },
   {
     title: "Netzwerk aktivieren",
-    text: "Anwaelte, Steuerberater, Bankpartner und Versicherungen werden passend eingebunden.",
+    text: "Anwälte, Steuerberater, Bankpartner und Versicherungen werden passend eingebunden.",
     image: stepImage4,
   },
   {
     title: "Kauf begleiten",
-    text: "Unterlagen, Pruefung und die naechsten Schritte rund um den Kauf bleiben verstaendlich und geordnet.",
+    text: "Unterlagen, Prüfung und die nächsten Schritte rund um den Kauf bleiben verständlich und geordnet.",
     image: stepImage5,
   },
   {
     title: "Ankommen",
-    text: "Umzug, erste Ablaeufe vor Ort und weitere Betreuung greifen sauber ineinander.",
+    text: "Umzug, erste Abläufe vor Ort und weitere Betreuung greifen sauber ineinander.",
     image: stepImage6,
   },
 ];
 
 const supportBoxes = [
   {
-    title: "Immobilien",
-    text: "Haeuser, Wohnungen und Neubauprojekte werden passend zu Ihrem Lebensmodell, Budget und Zielbild zusammengestellt.",
-    icon: Building2,
+    title: "Vorauswahl",
+    text: "Statt unübersichtlicher Objektflut entsteht eine Auswahl, die zu Lebensmodell, Budget und Zielbild passt.",
+    icon: HousePlus,
   },
   {
-    title: "Recht & Bank",
-    text: "Genau bei diesen Themen brauchen viele Kunden klare Ansprechpartner und deutschsprachige Orientierung.",
+    title: "Partnernetzwerk",
+    text: "Genau bei Recht, Bank, Steuer und Versicherung brauchen viele Kunden klare Ansprechpartner auf Deutsch.",
     icon: Scale,
   },
   {
-    title: "Objekte",
-    text: "Ausgewaehlte Haeuser, Wohnungen und Neubauprojekte fuer Ihren Plan an der Costa del Sol.",
-    icon: Building2,
+    title: "Dokumente & Ablauf",
+    text: "Unterlagen, Abstimmungen und die nächsten Schritte bleiben geordnet, nachvollziehbar und gut vorbereitet.",
+    icon: FileText,
   },
   {
-    title: "Begleitung",
-    text: "Bank, Dokumente, Recht und die naechsten Schritte werden nicht getrennt, sondern zusammen gedacht.",
-    icon: Landmark,
+    title: "Ankommen vor Ort",
+    text: "Auch nach der Auswahl greifen Kontakte, Orientierung und Unterstützung für die ersten Schritte in Spanien weiter.",
+    icon: Handshake,
   },
 ];
 
@@ -128,7 +129,7 @@ export function ScrollStory() {
               <div>
                 <Image
                   src={aboutImage}
-                  alt="Costa del Sol Kuestenaufnahme"
+                  alt="Costa del Sol Küstenaufnahme"
                   className="h-[20rem] w-full object-cover sm:h-[25rem]"
                   priority={false}
                 />

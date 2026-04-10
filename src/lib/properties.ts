@@ -6,7 +6,7 @@ import {
   type PropertyRecord,
   type PropertyStatus,
 } from "@/data/properties";
-import heroImage from "@/assets/hero.jpg";
+import heroImage from "@/assets/hero2.jpg";
 
 type StrapiEntry = {
   id?: number | string;
@@ -85,8 +85,88 @@ const locationPriority: Record<string, number> = {
   "rincon de la victoria": 6,
 };
 
+const displayReplacements = [
+  ["Ã„", "Ä"],
+  ["Ã¤", "ä"],
+  ["Ã–", "Ö"],
+  ["Ã¶", "ö"],
+  ["Ãœ", "Ü"],
+  ["Ã¼", "ü"],
+  ["ÃŸ", "ß"],
+  ["Ã¡", "á"],
+  ["Ã³", "ó"],
+  ["â€“", "–"],
+  ["â€”", "—"],
+  ["â‚¬", "€"],
+  ["Â²", "²"],
+  ["Â·", "·"],
+  ["Â", ""],
+  ["Haeuser", "Häuser"],
+  ["haeuser", "häuser"],
+  ["Luxurioese", "Luxuriöse"],
+  ["luxurioese", "luxuriöse"],
+  ["Ausgewaehl", "Ausgewähl"],
+  ["ausgewaehl", "ausgewähl"],
+  ["Wuensche", "Wünsche"],
+  ["wuensche", "wünsche"],
+  ["Anwaelte", "Anwälte"],
+  ["anwaelte", "anwälte"],
+  ["Pruef", "Prüf"],
+  ["pruef", "prüf"],
+  ["Kuest", "Küst"],
+  ["kuest", "küst"],
+  ["Flaeche", "Fläche"],
+  ["flaeche", "fläche"],
+  ["Plaetze", "Plätze"],
+  ["plaetze", "plätze"],
+  ["Baeder", "Bäder"],
+  ["baeder", "bäder"],
+  ["Kaeufer", "Käufer"],
+  ["kaeufer", "käufer"],
+  ["Kueche", "Küche"],
+  ["kueche", "küche"],
+  ["Gaeste", "Gäste"],
+  ["gaeste", "gäste"],
+  ["Tueren", "Türen"],
+  ["tueren", "türen"],
+  ["Naehe", "Nähe"],
+  ["naehe", "nähe"],
+  ["naechst", "nächst"],
+  ["Naechst", "Nächst"],
+  ["verstaend", "verständ"],
+  ["Verstaend", "Verständ"],
+  ["fusslaeufig", "fußläufig"],
+  ["Fusslaeufig", "Fußläufig"],
+  ["grosszueg", "großzüg"],
+  ["Grosszueg", "Großzüg"],
+  ["gross", "groß"],
+  ["Gross", "Groß"],
+  ["fuer", "für"],
+  ["Fuer", "Für"],
+  ["ueber", "über"],
+  ["Ueber", "Über"],
+  ["Moecht", "Möcht"],
+  ["moecht", "möcht"],
+  ["Sued", "Süd"],
+  ["sued", "süd"],
+  ["Rincon", "Rincón"],
+  ["Malaga", "Málaga"],
+  ["Benalmadena", "Benalmádena"],
+] as const;
+
+function normalizeDisplayText(value: string | undefined) {
+  if (!value) {
+    return "";
+  }
+
+  return displayReplacements.reduce(
+    (current, [search, replace]) => current.split(search).join(replace),
+    value,
+  );
+}
+
 function splitLines(value: string | undefined) {
-  return (value ?? "")
+  return normalizeDisplayText(value)
     .split("\n")
     .map((line) => line.trim())
     .filter(Boolean);
@@ -108,8 +188,8 @@ function parseFacts(value: string | undefined): PropertyFact[] {
       return { label: "Hinweis", value: line };
     }
 
-    const label = parts.shift()?.trim() ?? "Hinweis";
-    const factValue = parts.join(":").trim();
+    const label = normalizeDisplayText(parts.shift()?.trim()) || "Hinweis";
+    const factValue = normalizeDisplayText(parts.join(":").trim());
 
     return { label, value: factValue };
   });
@@ -141,13 +221,15 @@ function normalizeProperty(entry: StrapiEntry): PropertyRecord | null {
   return {
     id: String(entry.documentId ?? entry.id ?? entry.slug),
     slug: entry.slug,
-    title: entry.titel,
+    title: normalizeDisplayText(entry.titel),
     group: entry.objektgruppe,
-    city: entry.ort,
-    region: entry.region ?? "Costa del Sol",
-    priceLabel: entry.preisText ?? "Preis auf Anfrage",
-    summary: entry.kurzbeschreibung ?? "",
-    description: entry.beschreibung ?? entry.kurzbeschreibung ?? "",
+    city: normalizeDisplayText(entry.ort),
+    region: normalizeDisplayText(entry.region) || "Costa del Sol",
+    priceLabel: normalizeDisplayText(entry.preisText) || "Preis auf Anfrage",
+    summary: normalizeDisplayText(entry.kurzbeschreibung),
+    description:
+      normalizeDisplayText(entry.beschreibung) ||
+      normalizeDisplayText(entry.kurzbeschreibung),
     facts: parseFacts(entry.eckdaten),
     highlights: splitLines(entry.highlights),
     coverImage: normalizeImageUrl(entry.vorschauBild?.url),
@@ -156,14 +238,33 @@ function normalizeProperty(entry: StrapiEntry): PropertyRecord | null {
   };
 }
 
+function normalizePropertyRecord(property: PropertyRecord): PropertyRecord {
+  return {
+    ...property,
+    title: normalizeDisplayText(property.title),
+    city: normalizeDisplayText(property.city),
+    region: normalizeDisplayText(property.region),
+    priceLabel: normalizeDisplayText(property.priceLabel),
+    summary: normalizeDisplayText(property.summary),
+    description: normalizeDisplayText(property.description),
+    facts: property.facts.map((fact) => ({
+      label: normalizeDisplayText(fact.label),
+      value: normalizeDisplayText(fact.value),
+    })),
+    highlights: property.highlights.map((highlight) =>
+      normalizeDisplayText(highlight),
+    ),
+  };
+}
+
 function mergeWithLocalFallback(property: PropertyRecord): PropertyRecord {
   const fallback = localProperties.find((entry) => entry.slug === property.slug);
 
   if (!fallback) {
-    return property;
+    return normalizePropertyRecord(property);
   }
 
-  return {
+  return normalizePropertyRecord({
     ...fallback,
     ...property,
     facts: property.facts.length > 0 ? property.facts : fallback.facts,
@@ -173,14 +274,14 @@ function mergeWithLocalFallback(property: PropertyRecord): PropertyRecord {
     description: property.description || fallback.description,
     summary: property.summary || fallback.summary,
     priceLabel: property.priceLabel || fallback.priceLabel,
-  };
+  });
 }
 
 export async function getProperties(): Promise<PropertyRecord[]> {
   const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   if (!baseUrl) {
-    return localProperties;
+    return localProperties.map(normalizePropertyRecord);
   }
 
   try {
@@ -205,9 +306,11 @@ export async function getProperties(): Promise<PropertyRecord[]> {
       .map((item) => (item ? mergeWithLocalFallback(item) : null))
       .filter((item): item is PropertyRecord => Boolean(item));
 
-    return normalized.length > 0 ? normalized : localProperties;
+    return normalized.length > 0
+      ? normalized
+      : localProperties.map(normalizePropertyRecord);
   } catch {
-    return localProperties;
+    return localProperties.map(normalizePropertyRecord);
   }
 }
 
@@ -230,7 +333,7 @@ export async function getPropertyBySlug(
 }
 
 export function getPropertyGroupLabel(group: PropertyGroupKey) {
-  return getGroupMeta(group).shortLabel;
+  return normalizeDisplayText(getGroupMeta(group).shortLabel);
 }
 
 export function normalizePropertySearchValue(value: string) {
@@ -298,16 +401,16 @@ export async function getTopPropertyLocations(
     .slice(0, limit)
     .map(([key, value]) => {
       const meta = locationMeta[key as keyof typeof locationMeta];
-      const displayCity = meta?.displayCity ?? value.city;
+      const displayCity = normalizeDisplayText(meta?.displayCity ?? value.city);
 
       return {
-        city: value.city,
+        city: normalizeDisplayText(value.city),
         displayCity,
         count: value.count,
         image: value.image || heroImage.src,
         href: `/immobilien?ort=${encodeURIComponent(displayCity)}`,
         description:
-          meta?.description ??
+          normalizeDisplayText(meta?.description) ||
           "Ausgewählte Immobilien in einer Lage, die für viele Käufer an der Costa del Sol besonders interessant ist.",
       };
     });
