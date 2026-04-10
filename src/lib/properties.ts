@@ -204,13 +204,31 @@ function normalizeImageUrl(value: string | undefined) {
     return value;
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+  const baseUrl = getStrapiBaseUrl();
 
   if (!baseUrl) {
     return value;
   }
 
   return new URL(value, baseUrl).toString();
+}
+
+function getStrapiBaseUrl() {
+  const configuredUrl = process.env.NEXT_PUBLIC_STRAPI_URL?.trim();
+
+  if (configuredUrl) {
+    return configuredUrl;
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    return "https://cds-api.cod-st.com";
+  }
+
+  return undefined;
+}
+
+function normalizeFallbackSlug(slug: string) {
+  return slug.replace(/-\d+$/, "");
 }
 
 function normalizeProperty(entry: StrapiEntry): PropertyRecord | null {
@@ -258,7 +276,11 @@ function normalizePropertyRecord(property: PropertyRecord): PropertyRecord {
 }
 
 function mergeWithLocalFallback(property: PropertyRecord): PropertyRecord {
-  const fallback = localProperties.find((entry) => entry.slug === property.slug);
+  const fallback = localProperties.find(
+    (entry) =>
+      entry.slug === property.slug ||
+      normalizeFallbackSlug(entry.slug) === normalizeFallbackSlug(property.slug),
+  );
 
   if (!fallback) {
     return normalizePropertyRecord(property);
@@ -278,7 +300,7 @@ function mergeWithLocalFallback(property: PropertyRecord): PropertyRecord {
 }
 
 export async function getProperties(): Promise<PropertyRecord[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+  const baseUrl = getStrapiBaseUrl();
 
   if (!baseUrl) {
     return localProperties.map(normalizePropertyRecord);
