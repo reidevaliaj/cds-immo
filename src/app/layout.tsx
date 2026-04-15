@@ -1,3 +1,4 @@
+import { CookieNotice } from "@/components/cookie-notice";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { Metadata } from "next";
@@ -39,6 +40,7 @@ export default function RootLayout({
         <SiteHeader />
         <div className="min-h-screen">{children}</div>
         <SiteFooter />
+        <CookieNotice />
       </body>
     </html>
   );

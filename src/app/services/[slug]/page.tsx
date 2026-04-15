@@ -1,14 +1,11 @@
-import immobilienvermittlungHeroImage from "@/assets/immobilienvermittlung-hero.jpg";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { WaveDivider } from "@/components/wave-divider";
-import { propertyGroups } from "@/data/properties";
+import { servicePageContent } from "@/data/service-content";
 import {
   getServicePageBySlug,
   servicePages,
-  siteSettings,
 } from "@/data/site-content";
-import { getProperties } from "@/lib/properties";
 import { ArrowRight, MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,36 +16,6 @@ type ServiceDetailPageProps = {
     slug: string;
   }>;
 };
-
-const vermittlungBenefits = [
-  {
-    title: "Passende Vorauswahl",
-    text: "Objekte werden nicht nur nach Preis, sondern nach Lebensmodell, Lage, Alltag und realer Nutzbarkeit zusammengestellt.",
-  },
-  {
-    title: "Deutschsprachige Begleitung",
-    text: "Fragen zu Regionen, Abläufen und Besichtigungen bleiben verständlich, ruhig und klar strukturiert.",
-  },
-  {
-    title: "Vernetzte Begleitung",
-    text: "Immobilie, Bank, Recht und Unterlagen werden früh zusammengedacht statt erst kurz vor dem Kauf.",
-  },
-];
-
-const vermittlungProcess = [
-  {
-    title: "Wunschbild schärfen",
-    text: "Zu Beginn klären wir Region, Budget, Objektart und ob es um Auswandern, Feriennutzung oder Kapitalanlage geht.",
-  },
-  {
-    title: "Objekte gezielt auswählen",
-    text: "Danach entsteht eine passende Auswahl aus Häusern, Wohnungen oder Neubauprojekten statt einer unsortierten Masse an Exposés.",
-  },
-  {
-    title: "Sicher weitergehen",
-    text: "Bei ernsthaftem Interesse werden die nächsten Schritte mit Besichtigung, Unterlagen und passenden Kontakten sauber vorbereitet.",
-  },
-];
 
 export function generateStaticParams() {
   return servicePages.map((page) => ({
@@ -61,73 +28,80 @@ export default async function ServiceDetailPage({
 }: ServiceDetailPageProps) {
   const { slug } = await params;
   const servicePage = getServicePageBySlug(slug);
+  const content = servicePageContent[slug];
 
-  if (!servicePage) {
+  if (!servicePage || !content) {
     notFound();
   }
 
-  if (!servicePage.implemented) {
-    return <main className="min-h-screen bg-[#f8fcfe] pt-32" />;
-  }
-
-  const properties = await getProperties();
-  const propertyCounts = propertyGroups.map((group) => ({
-    ...group,
-    count: properties.filter((property) => property.group === group.id).length,
-  }));
+  const secondaryHref =
+    slug === "immobilienvermittlung" ? "/immobilien" : "/services";
+  const secondaryLabel =
+    slug === "immobilienvermittlung" ? "Immobilien ansehen" : "Alle Leistungen";
 
   return (
     <main className="overflow-hidden">
       <section className="relative isolate min-h-[82svh] overflow-hidden bg-[#eff7fb] text-[#14384e]">
         <Image
-          src={immobilienvermittlungHeroImage}
-          alt="Straßenszene in Andalusien für die Immobilienvermittlung an der Costa del Sol"
+          src={content.image}
+          alt={content.imageAlt}
           fill
           priority
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,26,37,0.84)_0%,rgba(10,26,37,0.74)_24%,rgba(10,26,37,0.48)_48%,rgba(10,26,37,0.18)_74%,rgba(10,26,37,0.04)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,42,57,0.06)_0%,rgba(14,42,57,0.14)_44%,rgba(239,247,251,0.22)_80%,#eff7fb_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,26,37,0.84)_0%,rgba(10,26,37,0.76)_22%,rgba(10,26,37,0.48)_46%,rgba(10,26,37,0.12)_74%,rgba(10,26,37,0.04)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,42,57,0.05)_0%,rgba(14,42,57,0.14)_44%,rgba(239,247,251,0.24)_80%,#eff7fb_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_22%,rgba(255,232,203,0.18),transparent_24%),radial-gradient(circle_at_22%_78%,rgba(255,255,255,0.12),transparent_22%)]" />
 
         <div className="relative z-10 mx-auto flex min-h-[82svh] w-full max-w-[1280px] items-center px-6 pb-20 pt-34 lg:px-10 lg:pb-24 lg:pt-40">
           <div className="max-w-3xl">
             <Reveal>
               <span className="inline-flex rounded-full border border-white/18 bg-white/10 px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#f2d5a3] backdrop-blur-sm">
-                Leistung im Fokus
+                {content.eyebrow}
               </span>
             </Reveal>
 
             <Reveal delay={0.05}>
               <h1 className="mt-6 text-[3rem] leading-[0.94] font-semibold tracking-[-0.045em] text-balance text-white sm:text-[3.55rem] lg:text-[4.5rem]">
-                Immobilienvermittlung an der Costa del Sol mit deutscher Begleitung.
+                {content.title}
               </h1>
             </Reveal>
 
             <Reveal delay={0.1} className="max-w-2xl">
               <p className="mt-6 text-base leading-8 text-[#e7f1f5] sm:text-xl">
-                CDS-IMMO zeigt nicht einfach nur Immobilien. Wir begleiten bei der
-                Auswahl passender Häuser, Wohnungen und Neubauprojekte und
-                verbinden die Suche mit den nächsten Schritten Richtung Spanien.
+                {content.description}
               </p>
             </Reveal>
 
+            <Reveal delay={0.15}>
+              <div className="mt-7 flex flex-wrap gap-3">
+                {content.highlights.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/14 bg-white/10 px-4 py-2 text-sm text-[#f1f6f8] backdrop-blur-sm"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+
             <Reveal
-              delay={0.15}
+              delay={0.2}
               className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
               <Link
-                href="/immobilien"
+                href={`/kontakt?thema=${encodeURIComponent(content.contactTopic)}`}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d7b172] px-6 py-4 text-sm font-semibold text-[#08131b] shadow-[0_20px_45px_rgba(184,135,72,0.28)] transition hover:translate-y-[-1px] hover:bg-[#dfba7b]"
               >
-                Immobilien ansehen
+                Zum Kontaktformular
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href={`mailto:${siteSettings.email}`}
+                href={secondaryHref}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/14 bg-white/10 px-6 py-4 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/14"
               >
-                Beratung anfragen
+                {secondaryLabel}
                 <MoveRight className="h-4 w-4" />
               </Link>
             </Reveal>
@@ -149,21 +123,19 @@ export default async function ServiceDetailPage({
           <Reveal>
             <div className="max-w-2xl">
               <span className="inline-flex rounded-full border border-[#183f55]/10 bg-white px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#b68b4c]">
-                Was diese Leistung leistet
+                {content.introLabel}
               </span>
               <h2 className="mt-6 text-5xl leading-[0.94] font-semibold tracking-[-0.04em] text-[#0d2230]">
-                Die Immobiliensuche wird ruhiger, klarer und besser auf das echte Leben in Spanien abgestimmt.
+                {content.introTitle}
               </h2>
               <p className="mt-6 text-base leading-8 text-[#5f6e79] sm:text-lg">
-                Viele Interessenten brauchen nicht nur schöne Exposés, sondern eine
-                Auswahl, die zu Alltag, Region, Budget und dem gesamten Schritt an
-                die Costa del Sol passt. Genau dort setzt die Vermittlung an.
+                {content.introText}
               </p>
             </div>
           </Reveal>
 
           <div className="space-y-4">
-            {vermittlungBenefits.map((item, index) => (
+            {content.benefits.map((item, index) => (
               <Reveal key={item.title} delay={index * 0.05}>
                 <article className="rounded-[2rem] border border-[#0d2230]/10 bg-white p-7 shadow-[0_22px_58px_rgba(17,44,60,0.08)] sm:p-8">
                   <h3 className="text-3xl leading-[0.96] font-semibold tracking-[-0.03em] text-[#0d2230]">
@@ -186,34 +158,24 @@ export default async function ServiceDetailPage({
         <div className="relative mx-auto max-w-[1280px] px-6 lg:px-10">
           <Reveal>
             <SectionHeading
-              eyebrow="Objektarten"
-              title="Häuser, Wohnungen und Neubauprojekte werden nicht getrennt präsentiert, sondern passend zum Suchbild kuratiert."
-              description="Die Vermittlung denkt nicht in einer starren Standardliste. Je nach Wunsch, Region und Lebensmodell entsteht die Auswahl aus genau den Objektarten, die wirklich Sinn ergeben."
+              eyebrow={content.includedEyebrow}
+              title={content.includedTitle}
+              description={content.includedDescription}
               inverted
               wide
             />
           </Reveal>
 
-          <div className="mt-16 grid gap-5 lg:grid-cols-3">
-            {propertyCounts.map((group, index) => (
-              <Reveal key={group.id} delay={index * 0.05}>
+          <div className="mt-16 grid gap-5 lg:grid-cols-2">
+            {content.includedItems.map((item, index) => (
+              <Reveal key={item.title} delay={index * 0.05}>
                 <article className="flex h-full flex-col rounded-[2rem] border border-white/10 bg-white/6 p-8 shadow-[0_24px_70px_rgba(4,20,31,0.14)] backdrop-blur-sm sm:p-10">
-                  <span className="inline-flex w-fit rounded-full border border-white/14 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#f2d5a3]">
-                    {group.count} Objekte
-                  </span>
-                  <h3 className="mt-6 text-4xl leading-[0.94] font-semibold tracking-[-0.04em] text-[#f6efe5]">
-                    {group.shortLabel}
+                  <h3 className="text-4xl leading-[0.94] font-semibold tracking-[-0.04em] text-[#f6efe5]">
+                    {item.title}
                   </h3>
                   <p className="mt-5 text-base leading-8 text-[#d7e2e8]">
-                    {group.description}
+                    {item.text}
                   </p>
-                  <Link
-                    href="/immobilien"
-                    className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-[#d7b172] px-5 py-3 text-sm font-semibold text-[#d7b172] transition hover:bg-[#d7b172] hover:text-[#08131b]"
-                  >
-                    Zur Übersicht
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
                 </article>
               </Reveal>
             ))}
@@ -225,15 +187,15 @@ export default async function ServiceDetailPage({
         <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
           <Reveal>
             <SectionHeading
-              eyebrow="Ablauf"
-              title="So läuft die Vermittlung typischerweise ab."
-              description="Klarheit im Ablauf nimmt Druck heraus. Deshalb bleibt vom ersten Gespräch bis zur engeren Auswahl jeder Schritt nachvollziehbar."
+              eyebrow={content.processEyebrow}
+              title={content.processTitle}
+              description={content.processDescription}
               align="center"
             />
           </Reveal>
 
           <div className="mt-16 grid gap-5 lg:grid-cols-3">
-            {vermittlungProcess.map((item, index) => (
+            {content.processItems.map((item, index) => (
               <Reveal key={item.title} delay={index * 0.05}>
                 <article className="rounded-[2rem] border border-[#0d2230]/10 bg-white p-8 shadow-[0_22px_58px_rgba(17,44,60,0.08)]">
                   <span className="inline-flex rounded-full border border-[#183f55]/10 bg-[#eff7fb] px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[#b68b4c]">
@@ -248,6 +210,66 @@ export default async function ServiceDetailPage({
                 </article>
               </Reveal>
             ))}
+          </div>
+
+          <div className="mt-16 grid gap-6 lg:grid-cols-[0.88fr_1.12fr]">
+            {content.note ? (
+              <Reveal>
+                <aside className="rounded-[2rem] border border-[#d7b172]/22 bg-[linear-gradient(160deg,rgba(248,252,254,0.96),rgba(255,245,226,0.92))] p-8 shadow-[0_22px_58px_rgba(17,44,60,0.08)]">
+                  <span className="inline-flex rounded-full border border-[#d7b172]/28 bg-white px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#b68b4c]">
+                    Wichtiger Hinweis
+                  </span>
+                  <h3 className="mt-5 text-3xl leading-[0.96] font-semibold tracking-[-0.03em] text-[#0d2230]">
+                    {content.note.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-8 text-[#5f6e79]">
+                    {content.note.text}
+                  </p>
+                  {content.note.items?.length ? (
+                    <ul className="mt-5 space-y-3 text-sm leading-7 text-[#45606f]">
+                      {content.note.items.map((item) => (
+                        <li key={item} className="flex gap-3">
+                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#c59a5a]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </aside>
+              </Reveal>
+            ) : (
+              <div />
+            )}
+
+            <Reveal>
+              <div className="rounded-[2rem] bg-[#143649] p-8 text-[#f6efe5] shadow-[0_28px_80px_rgba(8,24,35,0.14)] sm:p-10">
+                <span className="inline-flex rounded-full border border-white/14 bg-white/8 px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#f2d5a3]">
+                  Kontakt
+                </span>
+                <h3 className="mt-5 text-4xl leading-[0.94] font-semibold tracking-[-0.04em]">
+                  {content.ctaTitle}
+                </h3>
+                <p className="mt-5 max-w-2xl text-base leading-8 text-[#d7e2e8]">
+                  {content.ctaText}
+                </p>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <Link
+                    href={`/kontakt?thema=${encodeURIComponent(content.contactTopic)}`}
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d7b172] px-6 py-4 text-sm font-semibold text-[#08131b] shadow-[0_20px_45px_rgba(184,135,72,0.28)] transition hover:translate-y-[-1px] hover:bg-[#dfba7b]"
+                  >
+                    Anfrage senden
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/14 bg-white/8 px-6 py-4 text-sm font-semibold text-white transition hover:bg-white/12"
+                  >
+                    Weitere Leistungen
+                    <MoveRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

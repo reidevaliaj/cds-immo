@@ -176,7 +176,7 @@ export default async function PropertyDetailPage({
 
                 <div className="mt-8 flex flex-col gap-3">
                   <Link
-                    href={`mailto:${siteSettings.email}?subject=${encodeURIComponent(`Anfrage zur Immobilie: ${property.title}`)}`}
+                    href={`/kontakt?thema=${encodeURIComponent(`Immobilie: ${property.title}`)}`}
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d7b172] px-5 py-3.5 text-sm font-semibold text-[#08131b] shadow-[0_18px_38px_rgba(184,135,72,0.22)] transition hover:translate-y-[-1px] hover:bg-[#dfba7b]"
                   >
                     Exposé anfragen

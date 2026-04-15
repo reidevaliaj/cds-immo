@@ -197,7 +197,7 @@ function parseFacts(value: string | undefined): PropertyFact[] {
 
 function normalizeImageUrl(value: string | undefined) {
   if (!value) {
-    return heroImage.src;
+    return "";
   }
 
   if (value.startsWith("http://") || value.startsWith("https://")) {
@@ -250,7 +250,8 @@ function normalizeProperty(entry: StrapiEntry): PropertyRecord | null {
       normalizeDisplayText(entry.kurzbeschreibung),
     facts: parseFacts(entry.eckdaten),
     highlights: splitLines(entry.highlights),
-    coverImage: normalizeImageUrl(entry.vorschauBild?.url),
+    coverImage:
+      normalizeImageUrl(entry.vorschauBild?.url) || heroImage.src,
     featured: Boolean(entry.featured),
     status: entry.vermarktungsstatus ?? "verfuegbar",
   };

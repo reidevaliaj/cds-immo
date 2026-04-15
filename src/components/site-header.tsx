@@ -130,7 +130,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/#kontakt"
+            href="/kontakt"
             onClick={closeMobileMenu}
             className="hidden rounded-full bg-[#d7b172] px-5 py-3 text-sm font-semibold text-[#08131b] shadow-[0_14px_30px_rgba(184,135,72,0.28)] transition hover:translate-y-[-1px] hover:bg-[#dfba7b] lg:inline-flex"
           >
@@ -215,7 +215,7 @@ export function SiteHeader() {
             })}
 
             <Link
-              href="/#kontakt"
+              href="/kontakt"
               onClick={closeMobileMenu}
               className="mt-3 inline-flex w-full items-center justify-center rounded-full bg-[#d7b172] px-5 py-3 text-sm font-semibold text-[#08131b] shadow-[0_14px_30px_rgba(184,135,72,0.2)] transition hover:bg-[#dfba7b]"
             >
