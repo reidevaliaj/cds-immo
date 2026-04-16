@@ -1,9 +1,9 @@
-import aboutCityImage from "@/assets/about6.jpg";
-import heroImage from "@/assets/hero.jpg";
-import coastImage from "@/assets/hero2.jpg";
+import andalusianCityImage from "@/assets/andalusian-city.jpg";
+import benalmadenaVillageImage from "@/assets/benalmadena-village.jpg";
+import entranceBoardwalkImage from "@/assets/entrance-boardwalk.jpg";
 import immobilienvermittlungHeroImage from "@/assets/immobilienvermittlung-hero.jpg";
-import serviceBankImage from "@/assets/service-bank.jpg";
-import serviceMoveImage from "@/assets/service-move.jpg";
+import malagaCivicImage from "@/assets/malaga-civic.jpg";
+import marbellaCoastImage from "@/assets/marbella-coast.jpg";
 import type { StaticImageData } from "next/image";
 
 export type ServiceContentCard = {
@@ -128,9 +128,9 @@ const anwaelteContent: ServicePageContent = {
     "Mehrere Büros an der Costa del Sol",
     "NIE auf Wunsch",
   ],
-  image: aboutCityImage,
+  image: malagaCivicImage,
   imageAlt:
-    "Ruhige Küstenstadt an der Costa del Sol für die Seite Anwälte und Recht",
+    "Málaga-Stadtansicht mit repräsentativem Gebäude für die Seite Anwälte und Recht",
   contactTopic: "Anwälte & Recht",
   introLabel: "Worum es hier geht",
   introTitle:
@@ -219,9 +219,9 @@ const steuernContent: ServicePageContent = {
     "Fristen für Nichtresidenten",
     "NIE als Pflichtnummer",
   ],
-  image: heroImage,
+  image: malagaCivicImage,
   imageAlt:
-    "Helle Küstenaufnahme als ruhiger Hintergrund für Steuern, Kosten und NIE",
+    "Málaga-Stadtansicht als ruhiger Hintergrund für Steuern, Kosten und NIE",
   contactTopic: "Steuern, Kosten & NIE",
   introLabel: "Worum es hier geht",
   introTitle:
@@ -310,9 +310,9 @@ const bankContent: ServicePageContent = {
     "Hypotheken für deutsche Bürger",
     "Weniger Papierkram und Reibung",
   ],
-  image: serviceBankImage,
+  image: marbellaCoastImage,
   imageAlt:
-    "Küstenstadt an der Costa del Sol als ruhiger Hintergrund für Bank und Finanzierung",
+    "Küstenstadt an der Costa del Sol als Hintergrund für Bank und Finanzierung",
   contactTopic: "Bank & Finanzierung",
   introLabel: "Worum es hier geht",
   introTitle:
@@ -395,9 +395,9 @@ const krankenversicherungContent: ServicePageContent = {
     "Eigene Krankenhäuser an der Costa del Sol",
     "Angebote, Antrag und Vertragsangebot",
   ],
-  image: coastImage,
+  image: entranceBoardwalkImage,
   imageAlt:
-    "Ruhige Aufnahme der Costa del Sol für die Seite private Krankenversicherung",
+    "Promenade zur Küste an der Costa del Sol für die Seite private Krankenversicherung",
   contactTopic: "Private Krankenversicherung",
   introLabel: "Worum es hier geht",
   introTitle:
@@ -480,9 +480,9 @@ const umzugContent: ServicePageContent = {
     "Strukturierte Planung",
     "Mit Immobilie und Ankommen verknüpft",
   ],
-  image: serviceMoveImage,
+  image: andalusianCityImage,
   imageAlt:
-    "Straßenszene in Andalusien als Hintergrund für den Umzugsservice zwischen Deutschland und Spanien",
+    "Andalusische Straßenszene als Hintergrund für den Umzugsservice zwischen Deutschland und Spanien",
   contactTopic: "Umzugsservice DE–ES–DE",
   introLabel: "Worum es hier geht",
   introTitle:
@@ -565,9 +565,9 @@ const dokumentenContent: ServicePageContent = {
     "Abstimmungen mit Partnern",
     "Objektservice auf Wunsch",
   ],
-  image: heroImage,
+  image: benalmadenaVillageImage,
   imageAlt:
-    "Küstenmotiv für Dokumenten- und Objektservice an der Costa del Sol",
+    "Weißes Küstendorf an der Costa del Sol für Dokumenten- und Objektservice",
   contactTopic: "Dokumenten- & Objektservice",
   introLabel: "Worum es hier geht",
   introTitle:

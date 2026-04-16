@@ -1,4 +1,4 @@
-import coastImage from "@/assets/hero2.jpg";
+import benalmadenaVillageImage from "@/assets/benalmadena-village.jpg";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { WaveDivider } from "@/components/wave-divider";
@@ -16,8 +16,8 @@ export default function AuswandernPage() {
     <main className="overflow-hidden">
       <section className="relative isolate min-h-[78svh] overflow-hidden bg-[#eff7fb] text-[#14384e]">
         <Image
-          src={coastImage}
-          alt="Blick auf die Costa del Sol für die Auswandern-Seite"
+          src={benalmadenaVillageImage}
+          alt="Weißes Küstendorf an der Costa del Sol für die Auswandern-Seite"
           fill
           priority
           className="object-cover object-center"

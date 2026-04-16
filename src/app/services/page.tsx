@@ -1,4 +1,4 @@
-import coastImage from "@/assets/hero2.jpg";
+import marbellaCoastImage from "@/assets/marbella-coast.jpg";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceIcon } from "@/components/service-icon";
@@ -13,8 +13,8 @@ export default function ServicesPage() {
     <main className="overflow-hidden">
       <section className="relative isolate min-h-[78svh] overflow-hidden bg-[#eff7fb] text-[#14384e]">
         <Image
-          src={coastImage}
-          alt="Blick über die Costa del Sol für die Leistungsübersicht"
+          src={marbellaCoastImage}
+          alt="Küstenstadt an der Costa del Sol für die Leistungsübersicht"
           fill
           priority
           className="object-cover object-center"

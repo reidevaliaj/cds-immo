@@ -1,4 +1,4 @@
-import coastImage from "@/assets/hero2.jpg";
+import malagaCivicImage from "@/assets/malaga-civic.jpg";
 import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
@@ -21,8 +21,8 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
     <main className="overflow-hidden">
       <section className="relative isolate min-h-[72svh] overflow-hidden bg-[#eff7fb] text-[#14384e]">
         <Image
-          src={coastImage}
-          alt="Blick über die Costa del Sol für die Kontaktseite"
+          src={malagaCivicImage}
+          alt="Málaga-Stadtansicht für die Kontaktseite"
           fill
           priority
           className="object-cover object-center"

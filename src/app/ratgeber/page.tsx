@@ -1,4 +1,4 @@
-import coastImage from "@/assets/hero2.jpg";
+import entranceBoardwalkImage from "@/assets/entrance-boardwalk.jpg";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { WaveDivider } from "@/components/wave-divider";
@@ -60,8 +60,8 @@ export default function RatgeberPage() {
     <main className="overflow-hidden">
       <section className="relative isolate min-h-[78svh] overflow-hidden bg-[#eff7fb] text-[#14384e]">
         <Image
-          src={coastImage}
-          alt="Blick über die Costa del Sol für den Ratgeber"
+          src={entranceBoardwalkImage}
+          alt="Promenade zur Küste an der Costa del Sol für den Ratgeber"
           fill
           priority
           className="object-cover object-center"
