@@ -17,7 +17,7 @@ import Image from "next/image";
 const journeySteps = [
   {
     title: "Erstgespräch",
-    text: "Wir klären in Deutschland Ihre Wünsche, Ihr Budget und wie Ihr Plan für Spanien aussieht.",
+    text: "Wir klären in Deutschland Ihre Wünsche, Ihr Budget und wie Ihr Plan für Spanien aussieht. Alle Beratungsgespräche finden dabei flexibel telefonisch, per WhatsApp oder via Google Meet statt, persönliche Termine in Deutschland sind nicht erforderlich.",
     image: stepImage1,
   },
   {
@@ -60,7 +60,7 @@ const supportBoxes = [
   },
   {
     title: "Dokumente & Ablauf",
-    text: "Unterlagen, Abstimmungen und die nächsten Schritte bleiben geordnet, nachvollziehbar und gut vorbereitet.",
+    text: "Unterlagen, Abstimmungen und das weitere Vorgehen bleiben geordnet, nachvollziehbar und gut vorbereitet.",
     icon: FileText,
   },
   {

@@ -21,6 +21,7 @@ export type ServicePage = {
 export type ServiceIconName =
   | "Building2"
   | "Scale"
+  | "ReceiptText"
   | "Landmark"
   | "ShieldCheck"
   | "Truck"
@@ -58,9 +59,19 @@ export const servicePages: ServicePage[] = [
     navLabel: "Anwälte & Recht",
     title: "Anwälte & Recht",
     description:
-      "Deutschsprachige Anwälte für Prüfung, Kaufabwicklung und rechtssichere Begleitung beim Immobilienkauf in Spanien.",
+      "Deutschsprachige Rechtsbegleitung mit internationaler Kanzlei, mehreren Büros an der Costa del Sol und transparenter Kaufabwicklung.",
     menuDescription:
       "Rechtssichere Begleitung durch deutschsprachige Anwälte in Spanien.",
+  },
+  {
+    id: "steuern-kosten-nie",
+    slug: "steuern-kosten-nie",
+    navLabel: "Steuern, Kosten & NIE",
+    title: "Steuern, Kosten & NIE",
+    description:
+      "Überblick zu Kaufnebenkosten, laufenden Steuern, Fristen und der wichtigen NIE-Nummer beim Immobilienkauf in Spanien.",
+    menuDescription:
+      "Steuern, Kaufkosten und NIE beim Immobilienkauf klar eingeordnet.",
   },
   {
     id: "bankkonto-finanzierung",
@@ -68,19 +79,19 @@ export const servicePages: ServicePage[] = [
     navLabel: "Bank & Finanzierung",
     title: "Bank & Finanzierung",
     description:
-      "Deutschsprachige Ansprechpartner für Kontoeröffnung, Finanzierung und abgestimmte Bankprozesse in Spanien.",
+      "Deutschsprachige Unterstützung bei Kontoeröffnung, Hypothek und Finanzierungsabstimmung mit Banco Sabadell in Málaga.",
     menuDescription:
       "Konto, Finanzierung und Bankservice für deutschsprachige Käufer.",
   },
   {
     id: "private-krankenversicherung",
     slug: "private-krankenversicherung",
-    navLabel: "Krankenversicherung",
+    navLabel: "Private Krankenversicherung",
     title: "Private Krankenversicherung",
     description:
-      "Orientierung bei spanischer privater Krankenversicherung für Auswanderer, Käufer, Familien und Ruheständler.",
+      "Begleitung bei Angeboten, Antrag und Vertragsübergabe für private Krankenversicherung an der Costa del Sol.",
     menuDescription:
-      "Unterstützung bei passender privater Absicherung in Spanien.",
+      "Private Krankenversicherung mit klarer Begleitung für den Schritt nach Spanien.",
   },
   {
     id: "umzug-service",
@@ -104,6 +115,16 @@ export const servicePages: ServicePage[] = [
   },
 ];
 
+const serviceIcons: Record<string, ServiceIconName> = {
+  immobilienvermittlung: "Building2",
+  "anwaelte-steuerberater": "Scale",
+  "steuern-kosten-nie": "ReceiptText",
+  "bankkonto-finanzierung": "Landmark",
+  "private-krankenversicherung": "ShieldCheck",
+  "umzug-service": "Truck",
+  "dokumenten-objektservice": "FileCheck2",
+};
+
 export function getServiceHref(slug: string) {
   return `/services/${slug}`;
 }
@@ -123,6 +144,7 @@ export const navigation: NavItem[] = [
       href: getServiceHref(page.slug),
     })),
   },
+  { label: "Ratgeber", href: "/ratgeber" },
   { label: "Auswandern", href: "/auswandern" },
   { label: "Kontakt", href: "/kontakt" },
 ];
@@ -145,7 +167,7 @@ export const heroStats = [
 export const scrollStoryChapters = [
   {
     title: "Erstgespräch in Deutschland",
-    text: "Gemeinsam klären wir Wunschregion, Budget, Objekttyp und ob es um Ferienimmobilie, Auswandern, Ruhestand oder Kapitalanlage geht.",
+    text: "Gemeinsam klären wir Wunschregion, Budget, Objekttyp und ob es um Ferienimmobilie, Auswandern, Ruhestand oder Kapitalanlage geht. Alle Beratungsgespräche finden dabei flexibel telefonisch, per WhatsApp oder via Google Meet statt, persönliche Termine in Deutschland sind nicht erforderlich.",
   },
   {
     title: "Netzwerk in Spanien aktivieren",
@@ -157,50 +179,13 @@ export const scrollStoryChapters = [
   },
 ];
 
-export const services = [
-  {
-    id: servicePages[0].id,
-    title: servicePages[0].title,
-    description: servicePages[0].description,
-    href: getServiceHref(servicePages[0].slug),
-    icon: "Building2" as ServiceIconName,
-  },
-  {
-    id: servicePages[1].id,
-    title: servicePages[1].title,
-    description: servicePages[1].description,
-    href: getServiceHref(servicePages[1].slug),
-    icon: "Scale" as ServiceIconName,
-  },
-  {
-    id: servicePages[2].id,
-    title: servicePages[2].title,
-    description: servicePages[2].description,
-    href: getServiceHref(servicePages[2].slug),
-    icon: "Landmark" as ServiceIconName,
-  },
-  {
-    id: servicePages[3].id,
-    title: servicePages[3].title,
-    description: servicePages[3].description,
-    href: getServiceHref(servicePages[3].slug),
-    icon: "ShieldCheck" as ServiceIconName,
-  },
-  {
-    id: servicePages[4].id,
-    title: servicePages[4].title,
-    description: servicePages[4].description,
-    href: getServiceHref(servicePages[4].slug),
-    icon: "Truck" as ServiceIconName,
-  },
-  {
-    id: servicePages[5].id,
-    title: servicePages[5].title,
-    description: servicePages[5].description,
-    href: getServiceHref(servicePages[5].slug),
-    icon: "FileCheck2" as ServiceIconName,
-  },
-];
+export const services = servicePages.map((page) => ({
+  id: page.id,
+  title: page.title,
+  description: page.description,
+  href: getServiceHref(page.slug),
+  icon: serviceIcons[page.id],
+}));
 
 export const propertyCollections = [
   {
@@ -220,12 +205,7 @@ export const propertyCollections = [
     title: "Wohnungen & Penthäuser",
     description:
       "Apartments in Strandnähe, Penthäuser mit Blick und gut positionierte Wohnungen für Kapitalanlage, Feriennutzung oder das neue Leben unter spanischer Sonne.",
-    highlights: [
-      "Torremolinos",
-      "Benalmádena",
-      "Mijas",
-      "Fuengirola",
-    ],
+    highlights: ["Torremolinos", "Benalmádena", "Mijas", "Fuengirola"],
   },
   {
     id: "neubau",

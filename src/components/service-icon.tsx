@@ -2,6 +2,7 @@ import {
   Building2,
   FileCheck2,
   Landmark,
+  ReceiptText,
   Scale,
   ShieldCheck,
   Truck,
@@ -10,6 +11,7 @@ import {
 const icons = {
   Building2,
   Scale,
+  ReceiptText,
   Landmark,
   ShieldCheck,
   Truck,
