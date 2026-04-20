@@ -63,7 +63,7 @@ type PropertyFactsCompactProps = {
 
 export function PropertyFactsCompact({
   facts,
-  limit = 4,
+  limit = 3,
 }: PropertyFactsCompactProps) {
   const visibleFacts = getVisibleFacts(facts, limit);
 
@@ -72,19 +72,22 @@ export function PropertyFactsCompact({
   }
 
   return (
-    <div className="mt-6 grid gap-2 sm:grid-cols-2">
+    <div className="mt-6 grid gap-2.5">
       {visibleFacts.map((fact) => {
         const Icon = getPropertyFactIcon(fact.key);
 
         return (
           <div
             key={`${fact.key ?? fact.label}-${fact.value}`}
-            className="flex items-center gap-3 rounded-[1.25rem] border border-[#183f55]/8 bg-[#f6fbfe] px-4 py-3 text-[#183f55]"
+            className="grid grid-cols-[1.9rem_minmax(0,1fr)] items-center gap-3 text-[#183f55]"
           >
-            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white text-[#3d7590] shadow-[0_8px_18px_rgba(17,44,60,0.08)]">
+            <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#eff7fb] text-[#3d7590]">
               <Icon className="h-4 w-4" />
             </span>
-            <span className="text-sm font-semibold leading-6 text-[#183f55]">
+            <span
+              className="min-w-0 truncate text-sm font-semibold leading-6 text-[#183f55]"
+              title={fact.value}
+            >
               {fact.value}
             </span>
           </div>

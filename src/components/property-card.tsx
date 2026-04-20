@@ -70,7 +70,7 @@ export function PropertyCard({
               {property.summary}
             </p>
 
-            <PropertyFactsCompact facts={property.facts} limit={4} />
+            <PropertyFactsCompact facts={property.facts} limit={3} />
           </>
         ) : null}
 

@@ -81,20 +81,20 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
 
   return (
     <>
-      <div className="mt-8">
-        <div className="flex gap-4 overflow-x-auto pb-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <div className="mt-8 max-w-full overflow-hidden">
+        <div className="flex max-w-full gap-4 overflow-x-auto pb-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {visibleImages.map((image, index) => (
             <button
               key={`${image}-${index}`}
               type="button"
               onClick={() => setActiveIndex(index)}
-              className="group relative block aspect-[1.38] min-w-[18rem] overflow-hidden rounded-[1.85rem] border border-[#183f55]/10 bg-white shadow-[0_20px_55px_rgba(17,44,60,0.08)] transition hover:translate-y-[-2px] sm:min-w-[20rem] lg:min-w-[22rem]"
+              className="group relative block aspect-[1.34] w-[15rem] shrink-0 overflow-hidden rounded-[1.85rem] border border-[#183f55]/10 bg-white shadow-[0_20px_55px_rgba(17,44,60,0.08)] transition hover:translate-y-[-2px] sm:w-[16.5rem] lg:w-[17.5rem]"
             >
               <Image
                 src={image}
                 alt={`${title} Bild ${index + 1}`}
                 fill
-                sizes="(max-width: 640px) 18rem, (max-width: 1024px) 20rem, 22rem"
+                sizes="(max-width: 640px) 15rem, (max-width: 1024px) 16.5rem, 17.5rem"
                 className="object-cover transition duration-500 group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,24,34,0)_18%,rgba(9,24,34,0.28)_100%)]" />
