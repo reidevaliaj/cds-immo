@@ -1,3 +1,4 @@
+import { MarkdownContent } from "@/components/markdown-content";
 import { PropertyCard } from "@/components/property-card";
 import { Reveal } from "@/components/reveal";
 import { siteSettings } from "@/data/site-content";
@@ -6,7 +7,15 @@ import {
   getPropertyBySlug,
   getPropertyGroupLabel,
 } from "@/lib/properties";
-import { ArrowLeft, ArrowRight, MapPin } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Bath,
+  BedDouble,
+  CarFront,
+  MapPin,
+  Waves,
+} from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,6 +26,13 @@ type PropertyDetailPageProps = {
     slug: string;
   }>;
 };
+
+const propertyAmenityIcons = {
+  schlafzimmer: BedDouble,
+  badezimmer: Bath,
+  garage: CarFront,
+  pool: Waves,
+} as const;
 
 export async function generateMetadata({
   params,
@@ -51,6 +67,9 @@ export default async function PropertyDetailPage({
       (entry) => entry.group === property.group && entry.slug !== property.slug,
     )
     .slice(0, 3);
+  const galleryImages = property.galleryImages.filter(
+    (image) => image && image !== property.coverImage,
+  );
 
   return (
     <main className="overflow-hidden bg-[#f8fcfe]">
@@ -121,9 +140,34 @@ export default async function PropertyDetailPage({
               <h2 className="mt-6 text-5xl leading-[0.94] font-semibold tracking-[-0.045em] text-[#0d2230]">
                 Was diese Immobilie besonders macht.
               </h2>
-              <p className="mt-6 text-lg leading-9 text-[#526977]">
-                {property.description}
-              </p>
+              {property.amenities.length > 0 ? (
+                <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                  {property.amenities.map((amenity) => {
+                    const Icon = propertyAmenityIcons[amenity.key];
+
+                    return (
+                      <div
+                        key={`${property.id}-${amenity.key}`}
+                        className="rounded-[1.7rem] border border-[#183f55]/10 bg-white p-5 shadow-[0_18px_45px_rgba(17,44,60,0.06)]"
+                      >
+                        <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eff7fb] text-[#1f5a76]">
+                          <Icon className="h-5 w-5" />
+                        </span>
+                        <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#69808f]">
+                          {amenity.label}
+                        </p>
+                        <p className="mt-2 text-lg font-semibold text-[#0d2230]">
+                          {amenity.value}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : null}
+              <MarkdownContent
+                content={property.description}
+                className="mt-8 space-y-6 text-lg leading-9 text-[#526977]"
+              />
             </Reveal>
 
             <Reveal delay={0.06}>
@@ -196,6 +240,37 @@ export default async function PropertyDetailPage({
           </Reveal>
         </div>
       </section>
+
+      {galleryImages.length > 0 ? (
+        <section className="bg-white py-24 sm:py-28">
+          <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
+            <Reveal>
+              <span className="inline-flex rounded-full border border-[#183f55]/10 bg-[#eff7fb] px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-[#b68b4c]">
+                Bildergalerie
+              </span>
+              <h2 className="mt-6 max-w-3xl text-5xl leading-[0.94] font-semibold tracking-[-0.045em] text-[#0d2230]">
+                Weitere Eindrücke dieser Immobilie.
+              </h2>
+            </Reveal>
+
+            <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {galleryImages.map((image, index) => (
+                <Reveal key={`${property.id}-gallery-${index}`} delay={index * 0.04}>
+                  <div className="relative aspect-[1.14] overflow-hidden rounded-[2rem] border border-[#183f55]/10 bg-[#eff7fb] shadow-[0_24px_60px_rgba(17,44,60,0.08)]">
+                    <Image
+                      src={image}
+                      alt={`${property.title} Galerie ${index + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {relatedProperties.length > 0 ? (
         <section className="bg-[#efe6d7] py-24 sm:py-28">

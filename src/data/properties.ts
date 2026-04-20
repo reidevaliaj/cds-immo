@@ -7,6 +7,18 @@ export type PropertyFact = {
   value: string;
 };
 
+export type PropertyAmenityKey =
+  | "schlafzimmer"
+  | "badezimmer"
+  | "garage"
+  | "pool";
+
+export type PropertyAmenity = {
+  key: PropertyAmenityKey;
+  label: string;
+  value: string;
+};
+
 export type PropertyRecord = {
   id: string;
   slug: string;
@@ -17,12 +29,16 @@ export type PropertyRecord = {
   priceLabel: string;
   summary: string;
   description: string;
+  amenities: PropertyAmenity[];
   facts: PropertyFact[];
   highlights: string[];
   coverImage: string;
+  galleryImages: string[];
   featured: boolean;
   status: PropertyStatus;
 };
+
+type BasePropertyRecord = Omit<PropertyRecord, "amenities" | "galleryImages">;
 
 export const propertyGroups = [
   {
@@ -48,7 +64,7 @@ export const propertyGroups = [
   },
 ];
 
-export const localProperties: PropertyRecord[] = [
+const baseLocalProperties: BasePropertyRecord[] = [
   {
     id: "1748br",
     slug: "luxurioese-villa-am-strand-von-marbella",
@@ -386,6 +402,14 @@ export const localProperties: PropertyRecord[] = [
     status: "verfuegbar",
   },
 ];
+
+export const localProperties: PropertyRecord[] = baseLocalProperties.map(
+  (property) => ({
+    ...property,
+    amenities: [],
+    galleryImages: [],
+  }),
+);
 
 export function getGroupMeta(group: PropertyGroupKey) {
   return propertyGroups.find((entry) => entry.id === group) ?? propertyGroups[0];

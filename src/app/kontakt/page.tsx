@@ -99,7 +99,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 {
                   icon: MapPin,
                   title: "Standort",
-                  text: `${siteSettings.addressLines.join(", ")} · ${siteSettings.location}`,
+                  text: siteSettings.publicLocation,
                   href: "/rechtliches#impressum",
                 },
               ].map((item) => (

@@ -322,15 +322,15 @@ const bankContent: ServicePageContent = {
   benefits: [
     {
       title: "Deutschsprachiger Bankservice in Málaga",
-      text: "Nach Edwin Kortlers Erfahrung ist dies die einzige Bank in Spanien, die diesen deutschsprachigen Service mit Sitz in Málaga in dieser Form anbietet.",
+      text: "Nach den Erfahrungen von Veronica Rodriguez und Edwin Kortler ist dies die einzige Bank in Spanien, die diesen deutschsprachigen Service mit Sitz in Málaga in dieser Form anbietet.",
     },
     {
       title: "Hypotheken unkomplizierter vorbereiten",
-      text: "Gerade für deutsche Bürger werden Finanzierungen deutlich greifbarer, wenn die Ansprechpartner Sprache, Abläufe und Dokumentenlogik von Anfang an mitdenken.",
+      text: "Gerade für deutsche Bürger werden Finanzierungen verständlicher und vor allem einfacher vorbereitet und durchgeführt, fast so, als würden Sie in Deutschland zu Ihrer Hausbank gehen.",
     },
     {
       title: "Weniger Hürden im Papierprozess",
-      text: "Einkommensteuerbescheide, Gehaltsabrechnungen, notarielle Beglaubigungen, Apostillen und weitere Nachweise lassen sich geordneter vorbereiten und koordinieren.",
+      text: "Einkommensteuerbescheide, Gehaltsabrechnungen und weitere Nachweise lassen sich strukturierter vorbereiten, während unnötige Beglaubigungen und Apostillen durch diese Zusammenarbeit vielfach entfallen.",
     },
   ],
   includedEyebrow: "Wobei unterstützt wird",
@@ -341,15 +341,15 @@ const bankContent: ServicePageContent = {
   includedItems: [
     {
       title: "Kontoeröffnung in Spanien",
-      text: "Das spanische Konto als wichtige Grundlage für Kauf, Notartermin und laufende Zahlungen wird klar und nachvollziehbar vorbereitet.",
+      text: "Ein spanisches Girokonto wird klar vorbereitet, weil es für laufende Zahlungen rund um die Immobilie wichtig ist. Auch die IBI kann nur von einem spanischen Konto abgebucht werden.",
     },
     {
       title: "Hypothekenanfrage für deutsche Käufer",
-      text: "Die Finanzierung für deutsche Bürger wird verständlicher vorbereitet, damit offene Fragen nicht erst in der heißen Phase auftauchen.",
+      text: "Die Finanzierung für deutsche Bürger wird verständlicher und einfacher vorbereitet, damit der Ablauf deutlich greifbarer wird und offene Fragen nicht erst in der heißen Phase auftauchen.",
     },
     {
-      title: "Dokumente und Apostillen strukturieren",
-      text: "Hoher Papieraufwand, Einkommensnachweise, Lohnabrechnungen, Beglaubigungen und Apostillen werden sauberer in den Ablauf eingebunden.",
+      title: "Dokumente sauber vorbereiten",
+      text: "Hoher Papieraufwand, Einkommensnachweise und Lohnabrechnungen werden sauber in den Ablauf eingebunden, während unnötige Beglaubigungen und Apostillen durch diese Zusammenarbeit vielfach wegfallen.",
     },
     {
       title: "Mit dem Kaufprozess verzahnen",

@@ -10,7 +10,7 @@ export const privacySections = [
     id: "verantwortlicher",
     title: "2. Verantwortlicher",
     paragraphs: [
-      "Edwin Kortler / Costa del Sol Immobilien",
+      "Rodriguez & Kortler GbR / Costa del Sol Immobilien",
       "Potthöferei 19, 44388 Dortmund, Deutschland",
       "E-Mail: info@cds-immo.de",
       "Telefon: +49 176 21843 103",

@@ -33,12 +33,13 @@ export const siteSettings = {
   tagline: "Ihr deutscher Ansprechpartner an der Costa del Sol",
   email: "info@cds-immo.de",
   phone: "+49 176 21843 103",
-  location: "Málaga · Mijas · Marbella · Costa del Sol",
+  publicLocation: "Online-Beratung · Costa del Sol · Deutschland",
+  location: "Costa del Sol · Online-Beratung zwischen Deutschland und Spanien",
   whatsapp: "https://wa.me/4917621843103",
   instagram: "https://www.instagram.com/",
   facebook: "https://www.facebook.com/",
   companyName: "Rodriguez & Kortler GbR / Costa del Sol Immobilien",
-  responsible: "Edwin Kortler",
+  responsible: "Veronica Rodriguez und Edwin Kortler",
   addressLines: ["Potthöferei 19", "44388 Dortmund", "Deutschland"],
 };
 
