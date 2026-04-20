@@ -81,8 +81,8 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
 
   return (
     <>
-      <div className="mt-8 max-w-full overflow-hidden">
-        <div className="flex max-w-full gap-4 overflow-x-auto pb-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <div className="mt-8 w-full max-w-full overflow-hidden lg:max-w-[42rem]">
+        <div className="flex w-full max-w-full gap-4 overflow-x-auto pb-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {visibleImages.map((image, index) => (
             <button
               key={`${image}-${index}`}

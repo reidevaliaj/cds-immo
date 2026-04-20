@@ -116,7 +116,7 @@ export default async function PropertyDetailPage({
 
       <section className="py-24 sm:py-28">
         <div className="mx-auto grid max-w-[1280px] gap-10 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
-          <div>
+          <div className="min-w-0">
             <Reveal>
               <span className="inline-flex rounded-full border border-[#183f55]/10 bg-white px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-[#b68b4c]">
                 Überblick
