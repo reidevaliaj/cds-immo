@@ -319,29 +319,6 @@ function inferFactKey(label: string) {
   );
 }
 
-function parseFacts(value: string | undefined): PropertyFact[] {
-  return splitLines(value).map((line) => {
-    const parts = line.split(":");
-
-    if (parts.length < 2) {
-      return {
-        key: `custom-${slugifyToken(line) || "hinweis"}`,
-        label: "Hinweis",
-        value: line,
-      };
-    }
-
-    const label = normalizeDisplayText(parts.shift()?.trim()) || "Hinweis";
-    const factValue = normalizeDisplayText(parts.join(":").trim());
-
-    return {
-      key: inferFactKey(label),
-      label,
-      value: factValue,
-    };
-  });
-}
-
 function dedupeImageUrls(values: string[]) {
   const seen = new Set<string>();
 
@@ -489,7 +466,6 @@ function normalizeProperty(entry: StrapiEntry): PropertyRecord | null {
     return null;
   }
 
-  const parsedFacts = parseFacts(entry.eckdaten);
   const coverImage = normalizeImageUrl(entry.vorschauBild?.url) || heroImage.src;
   const galleryImages = dedupeImageUrls(
     [coverImage, ...(entry.bildergalerie ?? []).map((image) => normalizeImageUrl(image.url))]
@@ -508,7 +484,7 @@ function normalizeProperty(entry: StrapiEntry): PropertyRecord | null {
     description:
       normalizeDisplayText(entry.beschreibung) ||
       normalizeDisplayText(entry.kurzbeschreibung),
-    facts: buildStructuredFacts(parsedFacts, getExplicitFactValues(entry)),
+    facts: buildStructuredFacts([], getExplicitFactValues(entry)),
     highlights: splitLines(entry.highlights),
     coverImage,
     galleryImages,
