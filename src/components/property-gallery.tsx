@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 
 type PropertyGalleryProps = {
   images: string[];
@@ -12,6 +12,13 @@ type PropertyGalleryProps = {
 export function PropertyGallery({ images, title }: PropertyGalleryProps) {
   const visibleImages = images.filter(Boolean);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const dragStateRef = useRef<{
+    pointerId: number;
+    startX: number;
+    startScrollLeft: number;
+    moved: boolean;
+  } | null>(null);
 
   useEffect(() => {
     if (activeIndex === null) {
@@ -79,15 +86,79 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
     });
   };
 
+  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const scroller = scrollerRef.current;
+
+    if (!scroller) {
+      return;
+    }
+
+    dragStateRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startScrollLeft: scroller.scrollLeft,
+      moved: false,
+    };
+
+    scroller.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const scroller = scrollerRef.current;
+    const dragState = dragStateRef.current;
+
+    if (!scroller || !dragState || dragState.pointerId !== event.pointerId) {
+      return;
+    }
+
+    const deltaX = event.clientX - dragState.startX;
+
+    if (Math.abs(deltaX) > 6) {
+      dragState.moved = true;
+    }
+
+    scroller.scrollLeft = dragState.startScrollLeft - deltaX;
+  };
+
+  const clearDragState = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const scroller = scrollerRef.current;
+    const dragState = dragStateRef.current;
+
+    if (!scroller || !dragState || dragState.pointerId !== event.pointerId) {
+      return;
+    }
+
+    if (scroller.hasPointerCapture(event.pointerId)) {
+      scroller.releasePointerCapture(event.pointerId);
+    }
+
+    window.setTimeout(() => {
+      dragStateRef.current = null;
+    }, 0);
+  };
+
   return (
     <>
       <div className="mt-8 w-full max-w-full overflow-hidden lg:max-w-[42rem]">
-        <div className="flex w-full max-w-full gap-4 overflow-x-auto pb-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div
+          ref={scrollerRef}
+          className="flex w-full max-w-full cursor-grab gap-4 overflow-x-auto pb-3 active:cursor-grabbing [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={clearDragState}
+          onPointerCancel={clearDragState}
+        >
           {visibleImages.map((image, index) => (
             <button
               key={`${image}-${index}`}
               type="button"
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                if (dragStateRef.current?.moved) {
+                  return;
+                }
+
+                setActiveIndex(index);
+              }}
               className="group relative block aspect-[1.34] w-[15rem] shrink-0 overflow-hidden rounded-[1.85rem] border border-[#183f55]/10 bg-white shadow-[0_20px_55px_rgba(17,44,60,0.08)] transition hover:translate-y-[-2px] sm:w-[16.5rem] lg:w-[17.5rem]"
             >
               <Image
