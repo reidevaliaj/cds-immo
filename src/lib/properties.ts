@@ -1,8 +1,6 @@
 import {
   getGroupMeta,
   localProperties,
-  type PropertyAmenity,
-  type PropertyAmenityKey,
   type PropertyFact,
   type PropertyGroupKey,
   type PropertyRecord,
@@ -19,10 +17,22 @@ type StrapiEntry = {
   ort?: string;
   region?: string;
   preisText?: string;
+  wohnflaeche?: string;
+  grundstueck?: string;
   schlafzimmer?: string;
   badezimmer?: string;
   garage?: string;
   pool?: string;
+  terrasse?: string;
+  strand?: string;
+  stockwerk?: string;
+  ausrichtung?: string;
+  fertigstellung?: string;
+  baujahr?: string;
+  flughafen?: string;
+  golf?: string;
+  einheiten?: string;
+  zusatzraum?: string;
   kurzbeschreibung?: string;
   beschreibung?: string;
   eckdaten?: string;
@@ -45,6 +55,105 @@ export type PropertyLocationSummary = {
   href: string;
   description: string;
 };
+
+type FactField = {
+  key: string;
+  label: string;
+  aliases: string[];
+};
+
+const propertyFactFields: FactField[] = [
+  {
+    key: "wohnflaeche",
+    label: "Wohnfläche",
+    aliases: ["wohnflaeche", "wohnflache", "wohn und nutzflaeche", "gesamtflaeche"],
+  },
+  {
+    key: "grundstueck",
+    label: "Grundstück / Areal",
+    aliases: ["grundstueck", "grundstuck", "areal"],
+  },
+  {
+    key: "schlafzimmer",
+    label: "Schlafzimmer",
+    aliases: ["schlafzimmer"],
+  },
+  {
+    key: "badezimmer",
+    label: "Badezimmer",
+    aliases: ["badezimmer", "baeder", "bader", "bad"],
+  },
+  {
+    key: "garage",
+    label: "Garage / Parkplatz",
+    aliases: [
+      "garage",
+      "garagenplaetze",
+      "garagenplatze",
+      "parkplatz",
+      "parkplaetze",
+      "stellplatz",
+      "stellplaetze",
+    ],
+  },
+  {
+    key: "pool",
+    label: "Pool",
+    aliases: ["pool"],
+  },
+  {
+    key: "terrasse",
+    label: "Terrasse / Balkon",
+    aliases: ["terrasse", "balkon"],
+  },
+  {
+    key: "strand",
+    label: "Strand / Meer",
+    aliases: ["strand", "meer", "strand hafen", "strand und zentrum"],
+  },
+  {
+    key: "stockwerk",
+    label: "Stockwerk",
+    aliases: ["stockwerk", "etage"],
+  },
+  {
+    key: "ausrichtung",
+    label: "Ausrichtung",
+    aliases: ["ausrichtung"],
+  },
+  {
+    key: "fertigstellung",
+    label: "Fertigstellung",
+    aliases: ["fertigstellung"],
+  },
+  {
+    key: "baujahr",
+    label: "Baujahr",
+    aliases: ["baujahr"],
+  },
+  {
+    key: "flughafen",
+    label: "Flughafen",
+    aliases: ["flughafen"],
+  },
+  {
+    key: "golf",
+    label: "Golf",
+    aliases: ["golf"],
+  },
+  {
+    key: "einheiten",
+    label: "Verfügbare Einheiten",
+    aliases: ["verfuegbare einheiten", "verfugbare einheiten", "einheiten"],
+  },
+  {
+    key: "zusatzraum",
+    label: "Zusatzraum",
+    aliases: ["zusatzraum", "abstellraum"],
+  },
+];
+
+const propertyFactOrder = propertyFactFields.map((field) => field.key);
 
 const locationMeta = {
   marbella: {
@@ -94,44 +203,22 @@ const locationPriority: Record<string, number> = {
   "rincon de la victoria": 6,
 };
 
-const amenityMeta: Record<
-  PropertyAmenityKey,
-  { label: string; aliases: string[] }
-> = {
-  schlafzimmer: {
-    label: "Schlafzimmer",
-    aliases: ["schlafzimmer"],
-  },
-  badezimmer: {
-    label: "Badezimmer",
-    aliases: ["badezimmer", "bader", "bad"],
-  },
-  garage: {
-    label: "Garage",
-    aliases: ["garage", "garagenplatze", "parkplatz", "stellplatz"],
-  },
-  pool: {
-    label: "Pool",
-    aliases: ["pool"],
-  },
-};
-
 const displayReplacements = [
-  ["Ã„", "Ä"],
-  ["Ã¤", "ä"],
-  ["Ã–", "Ö"],
-  ["Ã¶", "ö"],
-  ["Ãœ", "Ü"],
-  ["Ã¼", "ü"],
-  ["ÃŸ", "ß"],
-  ["Ã¡", "á"],
-  ["Ã³", "ó"],
-  ["â€“", "–"],
-  ["â€”", "—"],
-  ["â‚¬", "€"],
-  ["Â²", "²"],
-  ["Â·", "·"],
-  ["Â", ""],
+  ["Ãƒâ€ž", "Ä"],
+  ["ÃƒÂ¤", "ä"],
+  ["Ãƒâ€“", "Ö"],
+  ["ÃƒÂ¶", "ö"],
+  ["ÃƒÅ“", "Ü"],
+  ["ÃƒÂ¼", "ü"],
+  ["ÃƒÅ¸", "ß"],
+  ["ÃƒÂ¡", "á"],
+  ["ÃƒÂ³", "ó"],
+  ["Ã¢â‚¬â€œ", "–"],
+  ["Ã¢â‚¬â€", "—"],
+  ["Ã¢â€šÂ¬", "€"],
+  ["Ã‚Â²", "²"],
+  ["Ã‚Â·", "·"],
+  ["Ã‚", ""],
   ["Haeuser", "Häuser"],
   ["haeuser", "häuser"],
   ["Luxurioese", "Luxuriöse"],
@@ -183,6 +270,7 @@ const displayReplacements = [
   ["Rincon", "Rincón"],
   ["Malaga", "Málaga"],
   ["Benalmadena", "Benalmádena"],
+  ["PotthÃ¶ferei", "Potthöferei"],
 ] as const;
 
 function normalizeDisplayText(value: string | undefined) {
@@ -204,11 +292,31 @@ function splitLines(value: string | undefined) {
 }
 
 function normalizeSearchValue(value: string) {
-  return value
+  return normalizeDisplayText(value)
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
+    .replace(/ß/g, "ss")
+    .replace(/[^a-z0-9]+/g, " ")
     .trim();
+}
+
+function slugifyToken(value: string) {
+  return normalizeSearchValue(value).replace(/\s+/g, "-");
+}
+
+function getFactMetaByKey(key: string) {
+  return propertyFactFields.find((field) => field.key === key);
+}
+
+function inferFactKey(label: string) {
+  const normalizedLabel = normalizeSearchValue(label);
+
+  return (
+    propertyFactFields.find((field) =>
+      field.aliases.some((alias) => normalizedLabel.includes(alias)),
+    )?.key ?? undefined
+  );
 }
 
 function parseFacts(value: string | undefined): PropertyFact[] {
@@ -216,13 +324,21 @@ function parseFacts(value: string | undefined): PropertyFact[] {
     const parts = line.split(":");
 
     if (parts.length < 2) {
-      return { label: "Hinweis", value: line };
+      return {
+        key: `custom-${slugifyToken(line) || "hinweis"}`,
+        label: "Hinweis",
+        value: line,
+      };
     }
 
     const label = normalizeDisplayText(parts.shift()?.trim()) || "Hinweis";
     const factValue = normalizeDisplayText(parts.join(":").trim());
 
-    return { label, value: factValue };
+    return {
+      key: inferFactKey(label),
+      label,
+      value: factValue,
+    };
   });
 }
 
@@ -239,59 +355,97 @@ function dedupeImageUrls(values: string[]) {
   });
 }
 
-function createAmenity(key: PropertyAmenityKey, value: string): PropertyAmenity {
+function createStructuredFact(key: string, value: string): PropertyFact {
+  const meta = getFactMetaByKey(key);
+
   return {
     key,
-    label: amenityMeta[key].label,
+    label: meta?.label ?? normalizeDisplayText(key),
     value: normalizeDisplayText(value),
   };
 }
 
-function extractAmenities(
-  facts: PropertyFact[],
-  explicitValues?: Partial<Record<PropertyAmenityKey, string | undefined>>,
+function getExplicitFactValues(entry: StrapiEntry) {
+  return {
+    wohnflaeche: entry.wohnflaeche,
+    grundstueck: entry.grundstueck,
+    schlafzimmer: entry.schlafzimmer,
+    badezimmer: entry.badezimmer,
+    garage: entry.garage,
+    pool: entry.pool,
+    terrasse: entry.terrasse,
+    strand: entry.strand,
+    stockwerk: entry.stockwerk,
+    ausrichtung: entry.ausrichtung,
+    fertigstellung: entry.fertigstellung,
+    baujahr: entry.baujahr,
+    flughafen: entry.flughafen,
+    golf: entry.golf,
+    einheiten: entry.einheiten,
+    zusatzraum: entry.zusatzraum,
+  } as const;
+}
+
+function buildStructuredFacts(
+  sourceFacts: PropertyFact[],
+  explicitValues?: Partial<Record<string, string | undefined>>,
 ) {
-  const consumedFactLabels = new Set<string>();
-  const amenities: PropertyAmenity[] = [];
+  const factsMap = new Map<string, PropertyFact>();
+  const customFacts: PropertyFact[] = [];
 
-  (Object.keys(amenityMeta) as PropertyAmenityKey[]).forEach((key) => {
-    const explicitValue = normalizeDisplayText(explicitValues?.[key]);
+  Object.entries(explicitValues ?? {}).forEach(([key, rawValue]) => {
+    const value = normalizeDisplayText(rawValue);
 
-    if (explicitValue) {
-      amenities.push(createAmenity(key, explicitValue));
-      return;
-    }
-
-    const factMatch = facts.find((fact) =>
-      amenityMeta[key].aliases.some((alias) =>
-        normalizeSearchValue(fact.label).includes(alias),
-      ),
-    );
-
-    if (factMatch) {
-      consumedFactLabels.add(factMatch.label);
-      amenities.push(createAmenity(key, factMatch.value));
-      return;
-    }
-
-    if (key === "garage" || key === "pool") {
-      const marker = key === "garage" ? "garage" : "pool";
-      const indirectMatch = facts.find(
-        (fact) =>
-          normalizeSearchValue(fact.label).includes(marker) ||
-          normalizeSearchValue(fact.value).includes(marker),
-      );
-
-      if (indirectMatch) {
-        amenities.push(createAmenity(key, "inklusive"));
-      }
+    if (value) {
+      factsMap.set(key, createStructuredFact(key, value));
     }
   });
 
-  return {
-    amenities,
-    remainingFacts: facts.filter((fact) => !consumedFactLabels.has(fact.label)),
-  };
+  sourceFacts.forEach((fact, index) => {
+    const normalizedLabel = normalizeDisplayText(fact.label);
+    const normalizedValue = normalizeDisplayText(fact.value);
+    const resolvedKey = fact.key ?? inferFactKey(normalizedLabel);
+    const factSearch = `${normalizeSearchValue(normalizedLabel)} ${normalizeSearchValue(normalizedValue)}`.trim();
+
+    if (resolvedKey) {
+      if (!factsMap.has(resolvedKey)) {
+        factsMap.set(
+          resolvedKey,
+          createStructuredFact(resolvedKey, normalizedValue),
+        );
+      }
+      return;
+    }
+
+    if (!factsMap.has("garage") && factSearch.includes("garage")) {
+      factsMap.set("garage", createStructuredFact("garage", "inklusive"));
+      return;
+    }
+
+    if (!factsMap.has("pool") && factSearch.includes("pool")) {
+      factsMap.set("pool", createStructuredFact("pool", "inklusive"));
+      return;
+    }
+
+    customFacts.push({
+      key: `custom-${slugifyToken(normalizedLabel) || index}`,
+      label: normalizedLabel || "Hinweis",
+      value: normalizedValue,
+    });
+  });
+
+  return [...factsMap.values(), ...customFacts].sort((a, b) => {
+    const aIndex = propertyFactOrder.indexOf(a.key ?? "");
+    const bIndex = propertyFactOrder.indexOf(b.key ?? "");
+    const normalizedA = aIndex === -1 ? 999 : aIndex;
+    const normalizedB = bIndex === -1 ? 999 : bIndex;
+
+    if (normalizedA !== normalizedB) {
+      return normalizedA - normalizedB;
+    }
+
+    return a.label.localeCompare(b.label, "de");
+  });
 }
 
 function normalizeImageUrl(value: string | undefined) {
@@ -336,16 +490,9 @@ function normalizeProperty(entry: StrapiEntry): PropertyRecord | null {
   }
 
   const parsedFacts = parseFacts(entry.eckdaten);
-  const amenityData = extractAmenities(parsedFacts, {
-    schlafzimmer: entry.schlafzimmer,
-    badezimmer: entry.badezimmer,
-    garage: entry.garage,
-    pool: entry.pool,
-  });
   const coverImage = normalizeImageUrl(entry.vorschauBild?.url) || heroImage.src;
   const galleryImages = dedupeImageUrls(
-    (entry.bildergalerie ?? [])
-      .map((image) => normalizeImageUrl(image.url))
+    [coverImage, ...(entry.bildergalerie ?? []).map((image) => normalizeImageUrl(image.url))]
       .filter(Boolean),
   );
 
@@ -361,8 +508,7 @@ function normalizeProperty(entry: StrapiEntry): PropertyRecord | null {
     description:
       normalizeDisplayText(entry.beschreibung) ||
       normalizeDisplayText(entry.kurzbeschreibung),
-    amenities: amenityData.amenities,
-    facts: amenityData.remainingFacts,
+    facts: buildStructuredFacts(parsedFacts, getExplicitFactValues(entry)),
     highlights: splitLines(entry.highlights),
     coverImage,
     galleryImages,
@@ -373,18 +519,10 @@ function normalizeProperty(entry: StrapiEntry): PropertyRecord | null {
 
 function normalizePropertyRecord(property: PropertyRecord): PropertyRecord {
   const normalizedFacts = property.facts.map((fact) => ({
+    key: fact.key,
     label: normalizeDisplayText(fact.label),
     value: normalizeDisplayText(fact.value),
   }));
-  const amenityData = extractAmenities(normalizedFacts);
-  const normalizedAmenities =
-    property.amenities.length > 0
-      ? property.amenities.map((amenity) => ({
-          ...amenity,
-          label: normalizeDisplayText(amenity.label),
-          value: normalizeDisplayText(amenity.value),
-        }))
-      : amenityData.amenities;
 
   return {
     ...property,
@@ -394,14 +532,14 @@ function normalizePropertyRecord(property: PropertyRecord): PropertyRecord {
     priceLabel: normalizeDisplayText(property.priceLabel),
     summary: normalizeDisplayText(property.summary),
     description: normalizeDisplayText(property.description),
-    amenities: normalizedAmenities,
-    facts:
-      property.amenities.length > 0 ? normalizedFacts : amenityData.remainingFacts,
+    facts: buildStructuredFacts(normalizedFacts),
     highlights: property.highlights.map((highlight) =>
       normalizeDisplayText(highlight),
     ),
     galleryImages: dedupeImageUrls(
-      property.galleryImages.map((image) => normalizeImageUrl(image)),
+      [property.coverImage, ...property.galleryImages].map((image) =>
+        normalizeImageUrl(image),
+      ),
     ),
   };
 }
@@ -421,8 +559,6 @@ function mergeWithLocalFallback(property: PropertyRecord): PropertyRecord {
     ...fallback,
     ...property,
     facts: property.facts.length > 0 ? property.facts : fallback.facts,
-    amenities:
-      property.amenities.length > 0 ? property.amenities : fallback.amenities,
     highlights:
       property.highlights.length > 0 ? property.highlights : fallback.highlights,
     coverImage: property.coverImage || fallback.coverImage,
@@ -534,7 +670,10 @@ export async function getTopPropertyLocations(
 
     existing.count += 1;
 
-    if ((!existing.image && property.coverImage) || (!existing.featured && property.featured)) {
+    if (
+      (!existing.image && property.coverImage) ||
+      (!existing.featured && property.featured)
+    ) {
       existing.image = property.coverImage || existing.image;
       existing.featured = property.featured;
     }

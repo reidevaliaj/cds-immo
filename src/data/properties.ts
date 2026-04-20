@@ -3,18 +3,7 @@ export type PropertyGroupKey = "haeuser" | "neubau" | "wohnungen";
 export type PropertyStatus = "verfuegbar" | "reserviert" | "verkauft";
 
 export type PropertyFact = {
-  label: string;
-  value: string;
-};
-
-export type PropertyAmenityKey =
-  | "schlafzimmer"
-  | "badezimmer"
-  | "garage"
-  | "pool";
-
-export type PropertyAmenity = {
-  key: PropertyAmenityKey;
+  key?: string;
   label: string;
   value: string;
 };
@@ -29,7 +18,6 @@ export type PropertyRecord = {
   priceLabel: string;
   summary: string;
   description: string;
-  amenities: PropertyAmenity[];
   facts: PropertyFact[];
   highlights: string[];
   coverImage: string;
@@ -38,7 +26,7 @@ export type PropertyRecord = {
   status: PropertyStatus;
 };
 
-type BasePropertyRecord = Omit<PropertyRecord, "amenities" | "galleryImages">;
+type BasePropertyRecord = Omit<PropertyRecord, "galleryImages">;
 
 export const propertyGroups = [
   {
@@ -406,7 +394,6 @@ const baseLocalProperties: BasePropertyRecord[] = [
 export const localProperties: PropertyRecord[] = baseLocalProperties.map(
   (property) => ({
     ...property,
-    amenities: [],
     galleryImages: [],
   }),
 );

@@ -1,4 +1,5 @@
 import type { PropertyRecord } from "@/data/properties";
+import { PropertyFactsCompact } from "@/components/property-facts";
 import { getPropertyGroupLabel } from "@/lib/properties";
 import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
@@ -55,7 +56,12 @@ export function PropertyCard({
         </div>
 
         <h3 className="mt-4 text-3xl leading-[0.96] font-semibold tracking-[-0.03em] text-[#0d2230]">
-          {property.title}
+          <Link
+            href={`/immobilien/${property.slug}`}
+            className="transition hover:text-[#255f7c]"
+          >
+            {property.title}
+          </Link>
         </h3>
 
         {!isHomepage ? (
@@ -64,19 +70,7 @@ export function PropertyCard({
               {property.summary}
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              {property.facts.slice(0, 3).map((fact) => (
-                <span
-                  key={`${property.id}-${fact.label}`}
-                  className="rounded-full border border-[#0d2230]/8 bg-[#f6fbfe] px-3 py-2 text-sm text-[#35505f]"
-                >
-                  <span className="font-semibold text-[#183f55]">
-                    {fact.label}:
-                  </span>{" "}
-                  {fact.value}
-                </span>
-              ))}
-            </div>
+            <PropertyFactsCompact facts={property.facts} limit={4} />
           </>
         ) : null}
 
