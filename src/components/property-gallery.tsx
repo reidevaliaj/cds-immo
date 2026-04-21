@@ -204,7 +204,7 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
                   setActiveIndex(index);
                 }}
                 onDragStart={(event) => event.preventDefault()}
-                className="group relative block aspect-[1.18] w-[calc(82%-0.5rem)] shrink-0 overflow-hidden rounded-[1.55rem] border border-[#183f55]/10 bg-white transition-colors duration-300 sm:w-[calc(50%-0.375rem)] lg:w-[calc(25%-0.5625rem)]"
+                className="group relative block aspect-[1.18] w-[calc(82%-0.5rem)] shrink-0 cursor-pointer overflow-hidden rounded-[1.55rem] border border-[#183f55]/10 bg-white transition-colors duration-300 sm:w-[calc(50%-0.375rem)] lg:w-[calc(25%-0.5625rem)]"
               >
                 <Image
                   src={image}
