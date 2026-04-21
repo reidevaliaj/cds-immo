@@ -179,7 +179,7 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
             <button
               type="button"
               onClick={() => scrollByOneCard("previous")}
-              className="absolute left-0 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#183f55]/10 bg-white text-[#183f55] shadow-[0_10px_24px_rgba(17,44,60,0.12)] transition hover:bg-[#eff7fb]"
+              className="absolute left-0 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#183f55]/10 bg-white text-[#183f55] transition hover:bg-[#eff7fb]"
               aria-label="Vorherige Bilder"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -204,7 +204,7 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
                   setActiveIndex(index);
                 }}
                 onDragStart={(event) => event.preventDefault()}
-                className="group relative block aspect-[1.18] w-[calc(82%-0.5rem)] shrink-0 overflow-hidden rounded-[1.55rem] border border-[#183f55]/10 bg-white shadow-[0_14px_34px_rgba(17,44,60,0.08)] transition-colors duration-300 sm:w-[calc(50%-0.375rem)] lg:w-[calc(25%-0.5625rem)]"
+                className="group relative block aspect-[1.18] w-[calc(82%-0.5rem)] shrink-0 overflow-hidden rounded-[1.55rem] border border-[#183f55]/10 bg-white transition-colors duration-300 sm:w-[calc(50%-0.375rem)] lg:w-[calc(25%-0.5625rem)]"
               >
                 <Image
                   src={image}
@@ -222,7 +222,7 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
             <button
               type="button"
               onClick={() => scrollByOneCard("next")}
-              className="absolute right-0 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#183f55]/10 bg-white text-[#183f55] shadow-[0_10px_24px_rgba(17,44,60,0.12)] transition hover:bg-[#eff7fb]"
+              className="absolute right-0 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#183f55]/10 bg-white text-[#183f55] transition hover:bg-[#eff7fb]"
               aria-label="Nächste Bilder"
             >
               <ChevronRight className="h-4 w-4" />
