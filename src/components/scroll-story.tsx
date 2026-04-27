@@ -61,7 +61,7 @@ export function ScrollStory() {
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-flex rounded-full border border-[#183f55]/10 bg-white/76 px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#b58949]">
-              Der Weg nach Spanien
+              Mehr als Makler
             </span>
             <h2 className="mt-6 text-4xl leading-[0.95] font-semibold tracking-[-0.04em] text-[#17394d] sm:text-5xl lg:text-[3.7rem]">
               Der Schritt nach Spanien ist komplexer, als er scheint.
@@ -70,7 +70,9 @@ export function ScrollStory() {
               Viele starten mit einer klaren Vorstellung: eine Immobilie an der
               Costa del Sol. Die eigentlichen Fragen beginnen oft erst danach
               bei Finanzierung, Unterlagen, Abläufen und der Organisation des
-              Übergangs.
+              Übergangs. Genau deshalb versteht sich CDS-IMMO nicht nur als
+              Makler, sondern als deutschsprachige Begleitung für den gesamten
+              Weg nach Spanien.
             </p>
           </div>
         </Reveal>

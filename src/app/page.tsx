@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { TopLocations } from "@/components/top-locations";
 import { WaveDivider } from "@/components/wave-divider";
 import { services, siteSettings } from "@/data/site-content";
+import { homepageTestimonials } from "@/data/testimonials";
 import { getTopPropertyLocations } from "@/lib/properties";
 import {
   ArrowRight,
@@ -13,15 +14,16 @@ import {
   Landmark,
   MessageCircle,
   ShieldCheck,
+  Star,
   Users2,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const heroTrustItems = [
-  "Deutschsprachige Spezialisierung",
-  "Netzwerk in Spanien & Deutschland",
-  "Begleitung bis zur Schlüsselübergabe",
+  "Mehr als Makler: Immobilie, Netzwerk und Neustart aus einer Hand",
+  "Deutschsprachige Spezialisierung in Spanien und Deutschland",
+  "Begleitung von der Suche bis zur Schlüsselübergabe",
 ];
 
 const bankBenefits = [
@@ -33,12 +35,12 @@ const bankBenefits = [
 const whyChooseUs = [
   {
     title: "Ganzheitlicher Ansatz",
-    text: "Nicht nur Objektvorschläge, sondern ein strukturierter Weg mit Immobilie, Bank, Recht und Übergang.",
+    text: "Nicht nur Objektvorschläge, sondern ein strukturierter Weg mit Immobilie, Bank, Recht und Übergang nach Spanien.",
     icon: ShieldCheck,
   },
   {
     title: "Spezialisierung auf deutsche Kunden",
-    text: "Kommunikation, Prozesse und Begleitung sind auf die Fragen deutschsprachiger Käufer und Auswanderer ausgerichtet.",
+    text: "Kommunikation, Prozesse und Begleitung sind auf die Fragen deutschsprachiger Käufer, Auswanderer und Investoren ausgerichtet.",
     icon: Users2,
   },
   {
@@ -75,16 +77,16 @@ export default async function Home() {
 
             <Reveal delay={0.05} className="max-w-3xl">
               <h1 className="mt-6 text-[3rem] leading-[0.94] font-semibold tracking-[-0.04em] text-balance text-[#21485e] sm:text-[3.8rem] lg:text-[4.85rem]">
-                Von Deutschland an die Costa del Sol – ohne Unsicherheit.
+                Von Deutschland an die Costa del Sol - ohne Unsicherheit.
               </h1>
             </Reveal>
 
             <Reveal delay={0.1} className="max-w-2xl">
               <p className="mt-5 text-base leading-8 text-[#31546a] sm:mt-6 sm:text-[1.08rem]">
-                Ob neuer Lebensabschnitt oder Investition: CDS-IMMO begleitet
-                Sie von der ersten Idee bis zur Immobilie in Spanien –
-                inklusive Finanzierung, Behörden und der Schritte, die danach
-                folgen.
+                Ob Auswandern, Zweitwohnsitz oder Investition: CDS-IMMO
+                begleitet Sie nicht nur bei der Immobilie in Spanien, sondern
+                auch bei Finanzierung, Recht, Behörden und der Organisation
+                Ihres neuen Lebensabschnitts.
               </p>
             </Reveal>
 
@@ -244,7 +246,7 @@ export default async function Home() {
             <SectionHeading
               eyebrow="Warum CDS-IMMO"
               title="Ruhiger Luxus statt lauter Verkauf."
-              description="CDS-IMMO soll nicht wie ein Immobilienportal wirken, sondern wie eine klare, persönliche Begleitung für einen Schritt, der für viele Kunden größer ist als nur ein Kauf."
+              description="CDS-IMMO soll nicht wie ein reiner Makler oder ein Portal wirken, sondern wie eine klare, persönliche Begleitung für einen Schritt, der für viele Kunden größer ist als nur der Kauf einer Immobilie."
               wide
             />
           </Reveal>
@@ -269,6 +271,44 @@ export default async function Home() {
                 </Reveal>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f8fcfe] py-24 sm:py-28">
+        <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Kundenstimmen"
+              title="Was Interessenten an der Begleitung durch CDS-IMMO besonders schätzen."
+              description="Für viele Kunden zählt nicht nur die passende Immobilie, sondern das Gefühl, bei Bank, Unterlagen und dem Schritt nach Spanien nicht alleine dazustehen."
+              align="center"
+            />
+          </Reveal>
+
+          <div className="mt-16 grid gap-5 lg:grid-cols-3">
+            {homepageTestimonials.slice(0, 3).map((testimonial, index) => (
+              <Reveal key={testimonial.name} delay={index * 0.05}>
+                <article className="rounded-[2rem] border border-[#183f55]/10 bg-white p-8 shadow-[0_22px_58px_rgba(57,108,134,0.08)]">
+                  <div className="flex gap-1 text-[#c59a5a]">
+                    {Array.from({ length: testimonial.rating }).map((_, starIndex) => (
+                      <Star key={starIndex} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="mt-6 text-lg leading-8 text-[#36505e]">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </p>
+                  <div className="mt-8 border-t border-[#183f55]/10 pt-5">
+                    <p className="text-lg font-semibold text-[#0d2230]">
+                      {testimonial.name}
+                    </p>
+                    <p className="mt-1 text-sm text-[#5f6e79]">
+                      {testimonial.origin}
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

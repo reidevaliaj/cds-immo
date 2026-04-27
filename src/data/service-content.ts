@@ -44,11 +44,11 @@ const immobilienvermittlungContent: ServicePageContent = {
   eyebrow: "Leistung im Fokus",
   title: "Immobilienvermittlung an der Costa del Sol mit deutscher Begleitung.",
   description:
-    "CDS-IMMO zeigt nicht einfach nur Immobilien. Wir begleiten bei der Auswahl passender Häuser, Wohnungen und Neubauprojekte und verbinden die Suche mit den nächsten Schritten Richtung Spanien.",
+    "CDS-IMMO zeigt nicht einfach nur Immobilien. Wir begleiten bei der Auswahl passender Häuser, Wohnungen und Neubauprojekte und verbinden die Suche mit den nächsten Schritten Richtung Spanien - von der ersten Orientierung bis zur abgestimmten Umsetzung.",
   highlights: [
     "Häuser, Wohnungen und Neubauprojekte",
     "Vorauswahl statt Objektflut",
-    "Deutschsprachige Begleitung",
+    "Mehr als Makler: Suche, Struktur und Begleitung",
   ],
   image: immobilienvermittlungHeroImage,
   imageAlt:

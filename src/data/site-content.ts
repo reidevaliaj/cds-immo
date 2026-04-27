@@ -31,6 +31,7 @@ export const siteSettings = {
   name: "Costa del Sol Immobilien",
   shortName: "CDS-IMMO",
   tagline: "Ihr deutscher Ansprechpartner an der Costa del Sol",
+  siteUrl: "https://cds-immo.vercel.app",
   email: "info@cds-immo.de",
   phone: "+49 176 21843 103",
   publicLocation: "Online-Beratung · Costa del Sol · Deutschland",

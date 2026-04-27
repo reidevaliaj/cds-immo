@@ -2,6 +2,7 @@ import { MarkdownContent } from "@/components/markdown-content";
 import { PropertyCard } from "@/components/property-card";
 import { PropertyFactsList } from "@/components/property-facts";
 import { PropertyGallery } from "@/components/property-gallery";
+import { PropertyShareLinks } from "@/components/property-share-links";
 import { Reveal } from "@/components/reveal";
 import { siteSettings } from "@/data/site-content";
 import {
@@ -185,6 +186,11 @@ export default async function PropertyDetailPage({
                     Per WhatsApp kontaktieren
                   </Link>
                 </div>
+
+                <PropertyShareLinks
+                  slug={property.slug}
+                  title={property.title}
+                />
               </div>
             </aside>
           </Reveal>
