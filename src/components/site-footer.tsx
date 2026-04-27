@@ -1,3 +1,5 @@
+"use client";
+
 import {
   legalLinks,
   navigation,
@@ -5,8 +7,15 @@ import {
   siteSettings,
 } from "@/data/site-content";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function SiteFooter() {
+  const pathname = usePathname();
+
+  if (pathname === "/services/immobilienvermittlung") {
+    return null;
+  }
+
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-[#183F55] text-[#f6fbfd]">
       <div className="absolute inset-0 bg-[linear-gradient(180deg,#1d4962_0%,#183F55_44%,#143649_100%)]" />

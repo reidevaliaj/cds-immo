@@ -1,3 +1,4 @@
+import { PremiumImmobilienvermittlungPage } from "@/components/premium-immobilienvermittlung-page";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { WaveDivider } from "@/components/wave-divider";
@@ -34,8 +35,21 @@ export default async function ServiceDetailPage({
     notFound();
   }
 
-  const secondaryHref =
-    slug === "immobilienvermittlung" ? "/immobilien" : "/services";
+  if (slug === "immobilienvermittlung") {
+    return <PremiumImmobilienvermittlungPage content={content} />;
+  }
+
+  return <StandardServiceDetailPage slug={slug} content={content} />;
+}
+
+function StandardServiceDetailPage({
+  slug,
+  content,
+}: {
+  slug: string;
+  content: (typeof servicePageContent)[keyof typeof servicePageContent];
+}) {
+  const secondaryHref = slug === "immobilienvermittlung" ? "/immobilien" : "/services";
   const secondaryLabel =
     slug === "immobilienvermittlung" ? "Immobilien ansehen" : "Alle Leistungen";
 

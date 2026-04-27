@@ -40,6 +40,10 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  if (pathname === "/services/immobilienvermittlung") {
+    return null;
+  }
+
   const transparent = pathname === "/" && !scrolled && !mobileOpen;
   const desktopNavClasses = transparent
     ? "rounded-full border border-white/45 bg-white/38 py-1 pl-3 pr-2 backdrop-blur-md shadow-[0_18px_40px_rgba(88,153,187,0.10)]"

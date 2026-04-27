@@ -53,7 +53,7 @@ export default async function Home() {
 
   return (
     <main className="overflow-hidden">
-      <section className="relative isolate min-h-[100svh] overflow-hidden bg-[#132d3d] text-[#f5f5f3]">
+      <section className="relative isolate min-h-[100svh] overflow-hidden bg-[#eff7fb] text-[#14384e]">
         <Image
           src={heroImage}
           alt="Hero-Aufnahme mit Meerblick, Infinity Pool und Costa-del-Sol-Stimmung"
@@ -61,9 +61,9 @@ export default async function Home() {
           priority
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,23,31,0.82)_0%,rgba(15,23,31,0.74)_24%,rgba(15,23,31,0.45)_52%,rgba(15,23,31,0.16)_76%,rgba(15,23,31,0.06)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,14,20,0.16)_0%,rgba(6,14,20,0.06)_34%,rgba(14,36,48,0.42)_74%,#102837_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(255,241,220,0.18),transparent_22%),radial-gradient(circle_at_76%_12%,rgba(120,182,211,0.16),transparent_18%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,252,254,0.96)_0%,rgba(248,252,254,0.9)_24%,rgba(248,252,254,0.56)_48%,rgba(248,252,254,0.16)_76%,rgba(248,252,254,0.06)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.04)_36%,rgba(239,247,251,0.42)_76%,#eff7fb_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(255,245,224,0.5),transparent_22%),radial-gradient(circle_at_76%_12%,rgba(120,182,211,0.14),transparent_18%)]" />
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[1280px] items-center px-6 pb-18 pt-32 sm:pb-24 sm:pt-36 lg:px-10 lg:pt-40">
           <div className="max-w-3xl">
@@ -74,13 +74,13 @@ export default async function Home() {
             </Reveal>
 
             <Reveal delay={0.05} className="max-w-3xl">
-              <h1 className="mt-6 text-[3rem] leading-[0.94] font-semibold tracking-[-0.04em] text-balance text-[#f5f5f3] sm:text-[3.8rem] lg:text-[4.85rem]">
+              <h1 className="mt-6 text-[3rem] leading-[0.94] font-semibold tracking-[-0.04em] text-balance text-[#21485e] sm:text-[3.8rem] lg:text-[4.85rem]">
                 Von Deutschland an die Costa del Sol – ohne Unsicherheit.
               </h1>
             </Reveal>
 
             <Reveal delay={0.1} className="max-w-2xl">
-              <p className="mt-5 text-base leading-8 text-[#d8e3e8] sm:mt-6 sm:text-[1.08rem]">
+              <p className="mt-5 text-base leading-8 text-[#31546a] sm:mt-6 sm:text-[1.08rem]">
                 Ob neuer Lebensabschnitt oder Investition: CDS-IMMO begleitet
                 Sie von der ersten Idee bis zur Immobilie in Spanien –
                 inklusive Finanzierung, Behörden und der Schritte, die danach
@@ -103,7 +103,7 @@ export default async function Home() {
                 href={siteSettings.whatsapp}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/18 bg-white/10 px-6 py-3.5 text-sm font-semibold text-[#f5f5f3] backdrop-blur-sm transition hover:bg-white/16 sm:px-7 sm:py-4"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#275772]/12 bg-white/74 px-6 py-3.5 text-sm font-semibold text-[#14384e] shadow-[0_16px_40px_rgba(62,126,160,0.12)] backdrop-blur-sm transition hover:bg-white/88 sm:px-7 sm:py-4"
               >
                 Diskret per WhatsApp anfragen
                 <MessageCircle className="h-4 w-4" />
@@ -111,13 +111,13 @@ export default async function Home() {
             </Reveal>
 
             <Reveal delay={0.2} className="mt-10">
-              <div className="grid gap-3 border-t border-white/14 pt-6 sm:grid-cols-3 sm:gap-5">
+              <div className="grid gap-3 border-t border-[#275772]/12 pt-6 sm:grid-cols-3 sm:gap-5">
                 {heroTrustItems.map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/12 text-[#d4b079]">
+                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/82 text-[#b58949] shadow-[0_10px_24px_rgba(88,153,187,0.12)]">
                       <Check className="h-3.5 w-3.5" />
                     </span>
-                    <p className="text-sm leading-7 text-[#e3ecef]">{item}</p>
+                    <p className="text-sm leading-7 text-[#3f6176]">{item}</p>
                   </div>
                 ))}
               </div>

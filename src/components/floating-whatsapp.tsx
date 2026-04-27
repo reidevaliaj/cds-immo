@@ -2,8 +2,15 @@
 
 import { siteSettings } from "@/data/site-content";
 import { MessageCircle } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export function FloatingWhatsappButton() {
+  const pathname = usePathname();
+
+  if (pathname === "/services/immobilienvermittlung") {
+    return null;
+  }
+
   return (
     <a
       href={siteSettings.whatsapp}
