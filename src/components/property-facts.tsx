@@ -109,24 +109,24 @@ export function PropertyFactsList({ facts }: PropertyFactsListProps) {
   }
 
   return (
-    <div className="mt-8 space-y-4">
+    <div className="mt-8 grid gap-x-5 gap-y-4 sm:grid-cols-2">
       {visibleFacts.map((fact) => {
         const Icon = getPropertyFactIcon(fact.key);
 
         return (
           <div
             key={`${fact.key ?? fact.label}-${fact.value}`}
-            className="flex items-start gap-4 rounded-[1.4rem] border border-[#183f55]/8 bg-[#f8fcfe] px-5 py-4"
+            className="flex items-start gap-3 border-b border-[#183f55]/8 pb-4"
           >
-            <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-[#3d7590] shadow-[0_10px_24px_rgba(17,44,60,0.08)]">
-              <Icon className="h-5 w-5" />
+            <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#eff7fb] text-[#3d7590]">
+              <Icon className="h-4 w-4" />
             </span>
 
             <div className="min-w-0">
               <p className="text-[0.76rem] font-semibold uppercase tracking-[0.18em] text-[#587080]">
                 {fact.label}
               </p>
-              <p className="mt-2 text-base font-semibold text-[#183f55]">
+              <p className="mt-1.5 text-sm font-semibold text-[#183f55] sm:text-[0.96rem]">
                 {fact.value}
               </p>
             </div>

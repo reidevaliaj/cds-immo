@@ -15,16 +15,16 @@ export function TopLocations({ locations }: TopLocationsProps) {
   }
 
   return (
-    <section className="relative overflow-hidden bg-[#183F55] py-24 text-[#f6efe5] sm:py-28">
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,#1d4962_0%,#183F55_44%,#143649_100%)]" />
+    <section className="relative overflow-hidden bg-[#173747] py-24 text-[#f6efe5] sm:py-28">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,#1a3c4f_0%,#173747_50%,#112b3a_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(255,255,255,0.08),transparent_18%),radial-gradient(circle_at_84%_24%,rgba(121,179,208,0.08),transparent_24%)]" />
 
       <div className="relative mx-auto max-w-[1280px] px-6 lg:px-10">
         <Reveal>
           <SectionHeading
             eyebrow="Top-Lagen"
-            title="Vier Orte an der Costa del Sol, in denen aktuell besonders viele CDS-IMMO Immobilien liegen."
-            description="Diese Auswahl verbindet starke Nachfrage, gute Alltagstauglichkeit und die Regionen, in denen das aktuelle Portfolio am sichtbarsten ist. Jeder Ort führt direkt in die passende Immobilienübersicht."
+            title="Orte an der Costa del Sol, in denen aktuelle Angebote und Lebensmodelle besonders gut zusammenkommen."
+            description="Marbella, La Cala de Mijas, Benalmádena und weitere Lagen zeigen, wo CDS-IMMO aktuell besonders präsent ist – und wohin viele Anfragen führen."
             inverted
             wide
           />

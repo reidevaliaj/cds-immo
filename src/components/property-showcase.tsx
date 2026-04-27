@@ -30,8 +30,8 @@ export async function PropertyShowcase() {
         <Reveal>
           <SectionHeading
             eyebrow="Immobilien"
-            title="Ausgewählte Immobilien aus dem aktuellen CDS-IMMO Portfolio an der Costa del Sol."
-            description="Vom strandnahen Apartment bis zur Villa mit Meerblick sehen Sie hier einen ersten Auszug aktueller Objekte aus verschiedenen Lagen der Costa del Sol."
+            title="Ausgewählte Immobilien an der Costa del Sol."
+            description="Ein erster Einblick in Häuser, Wohnungen und Neubauprojekte aus dem aktuellen CDS-IMMO Angebot – ausgewählt für unterschiedliche Lagen, Lebensmodelle und Zielbilder."
             wide
           />
         </Reveal>
