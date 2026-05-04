@@ -39,7 +39,7 @@ export const siteSettings = {
   whatsapp: "https://wa.me/4917621843103",
   instagram: "https://www.instagram.com/",
   facebook: "https://www.facebook.com/",
-  companyName: "Rodriguez & Kortler GbR / Costa del Sol Immobilien",
+  companyName: "Kortler & Rodriguez GbR / Costa del Sol Immobilien",
   responsible: "Veronica Rodriguez und Edwin Kortler",
   addressLines: ["Potthöferei 19", "44388 Dortmund", "Deutschland"],
 };
@@ -146,6 +146,7 @@ export const navigation: NavItem[] = [
       href: getServiceHref(page.slug),
     })),
   },
+  { label: "Über uns", href: "/ueber-uns" },
   { label: "Ratgeber", href: "/ratgeber" },
   { label: "Auswandern", href: "/auswandern" },
   { label: "Kontakt", href: "/kontakt" },

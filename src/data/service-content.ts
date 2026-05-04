@@ -11,6 +11,16 @@ export type ServiceContentCard = {
   text: string;
 };
 
+export type ServicePackageCard = {
+  label: string;
+  title: string;
+  price: string;
+  description: string;
+  points: string[];
+  ctaLabel: string;
+  tone: "base" | "recommended" | "premium";
+};
+
 export type ServicePageContent = {
   eyebrow: string;
   title: string;
@@ -35,6 +45,15 @@ export type ServicePageContent = {
     title: string;
     text: string;
     items?: string[];
+  };
+  packagesSection?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    packages: ServicePackageCard[];
+    followUpTitle: string;
+    followUpText: string;
+    followUpButtonLabel: string;
   };
   ctaTitle: string;
   ctaText: string;
@@ -363,7 +382,7 @@ const bankContent: ServicePageContent = {
   processItems: [
     {
       title: "Situation und Wunsch klären",
-      text: "Wir besprechen, ob es um Kontoeröffnung, Hypothek, Finanzierung aus Deutschland oder eine Kombination mehrerer Schritte geht.",
+      text: "Wir besprechen, ob es um Kontoeröffnung, Hypothek, Finanzierung in Spanien oder eine Kombination mehrerer Schritte geht.",
     },
     {
       title: "Passenden Kontakt herstellen",
@@ -381,7 +400,7 @@ const bankContent: ServicePageContent = {
   ctaTitle:
     "Wenn Konto oder Finanzierung der nächste Schritt ist, stellen wir gern den direkten deutschsprachigen Kontakt in Málaga her.",
   ctaText:
-    "Über das Kontaktformular können Sie kurz angeben, ob es um Konto, Hypothek, Finanzierung aus Deutschland oder eine erste Orientierung geht. Danach lässt sich der Ablauf deutlich schneller sortieren.",
+    "Über das Kontaktformular können Sie kurz angeben, ob es um Konto, Hypothek, Finanzierung in Spanien oder eine erste Orientierung geht. Danach lässt sich der Ablauf deutlich schneller sortieren.",
 };
 
 const krankenversicherungContent: ServicePageContent = {
@@ -632,6 +651,61 @@ const dokumentenContent: ServicePageContent = {
   note: {
     title: "Wichtiger Hinweis",
     text: "Diese Begleitung schafft Struktur und Orientierung. Rechts- oder Steuerberatung erfolgt ausschließlich über zugelassene externe Fachpartner.",
+  },
+  packagesSection: {
+    eyebrow: "Eigene Servicepakete",
+    title:
+      "Drei direkte Pakete für Kunden, die persönliche Begleitung nicht dem Zufall überlassen möchten.",
+    description:
+      "Diese Pakete werden direkt durch CDS-IMMO koordiniert und nicht an externe Partner ausgelagert. Sie richten sich an Kunden, die mehr als nur Hinweise wollen und einen klar begleiteten Ablauf bevorzugen.",
+    packages: [
+      {
+        label: "Basis",
+        title: "Strukturierter Start in Spanien",
+        price: "500 €",
+        description:
+          "Der Einstieg für alle, die eine klare erste Ordnung in Kontakte, Unterlagen und wichtige Formalitäten bringen möchten.",
+        points: [
+          "Relevante Kontakte und erste Zuständigkeiten sauber einordnen",
+          "Wichtige Unterlagen, Formalitäten und nächste Schritte sortieren",
+          "Grundstruktur schaffen, bevor Einzelthemen chaotisch werden",
+        ],
+        ctaLabel: "Anfrage starten",
+        tone: "base",
+      },
+      {
+        label: "VIP",
+        title: "Exklusive Begleitung vor Ort",
+        price: "ab 2.500 €",
+        description:
+          "Die empfohlene Lösung für Kunden, die persönliche Begleitung in Spanien mit direkter Koordination vor Ort wünschen.",
+        points: [
+          "Persönliche Begleitung in Spanien, auch unabhängig vom Immobilienkauf",
+          "Termine, Besichtigungen und wichtige Abläufe direkt abstimmen",
+          "Vor-Ort-Unterstützung, wenn Entscheidungen nicht nur digital fallen sollen",
+        ],
+        ctaLabel: "Beratung vereinbaren",
+        tone: "recommended",
+      },
+      {
+        label: "Premium",
+        title: "Ganzheitliche Betreuung Spanien",
+        price: "ab 5.000 €",
+        description:
+          "Die umfassende Lösung für Kunden, die mehrere Tage Begleitung, zentrale Steuerung und maximale Entlastung wünschen.",
+        points: [
+          "Mehrtägige persönliche Begleitung und priorisierte Unterstützung",
+          "Bank, Recht, Objekt, Termine und Partner als Gesamtprozess koordinieren",
+          "Entscheidungen ruhiger treffen, weil alle Fäden zentral zusammenlaufen",
+        ],
+        ctaLabel: "Individuelle Betreuung anfragen",
+        tone: "premium",
+      },
+    ],
+    followUpTitle: "Nicht sicher, welches Paket am besten passt?",
+    followUpText:
+      "Im Erstgespräch lässt sich schnell klären, ob ein strukturierter Einstieg genügt oder ob eine engere Begleitung vor Ort sinnvoller ist.",
+    followUpButtonLabel: "Kostenlose Erstberatung",
   },
   ctaTitle:
     "Wenn Unterlagen, Abläufe oder Objektbetreuung unübersichtlich werden, helfen klare Strukturen am meisten.",

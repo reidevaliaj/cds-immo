@@ -7,7 +7,7 @@ import {
   getServicePageBySlug,
   servicePages,
 } from "@/data/site-content";
-import { ArrowRight, MoveRight } from "lucide-react";
+import { ArrowRight, Check, MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -226,65 +226,200 @@ function StandardServiceDetailPage({
             ))}
           </div>
 
-          <div className="mt-16 grid gap-6 lg:grid-cols-[0.88fr_1.12fr]">
-            {content.note ? (
-              <Reveal>
-                <aside className="rounded-[2rem] border border-[#d7b172]/22 bg-[linear-gradient(160deg,rgba(248,252,254,0.96),rgba(255,245,226,0.92))] p-8 shadow-[0_22px_58px_rgba(17,44,60,0.08)]">
-                  <span className="inline-flex rounded-full border border-[#d7b172]/28 bg-white px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#b68b4c]">
-                    Wichtiger Hinweis
-                  </span>
-                  <h3 className="mt-5 text-3xl leading-[0.96] font-semibold tracking-[-0.03em] text-[#0d2230]">
-                    {content.note.title}
-                  </h3>
-                  <p className="mt-4 text-base leading-8 text-[#5f6e79]">
-                    {content.note.text}
-                  </p>
-                  {content.note.items?.length ? (
-                    <ul className="mt-5 space-y-3 text-sm leading-7 text-[#45606f]">
-                      {content.note.items.map((item) => (
-                        <li key={item} className="flex gap-3">
-                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#c59a5a]" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </aside>
-              </Reveal>
-            ) : (
-              <div />
-            )}
-
+          {content.note ? (
             <Reveal>
-              <div className="rounded-[2rem] bg-[#143649] p-8 text-[#f6efe5] shadow-[0_28px_80px_rgba(8,24,35,0.14)] sm:p-10">
-                <span className="inline-flex rounded-full border border-white/14 bg-white/8 px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#f2d5a3]">
-                  Kontakt
+              <aside className="mt-16 rounded-[2rem] border border-[#d7b172]/22 bg-[linear-gradient(160deg,rgba(248,252,254,0.96),rgba(255,245,226,0.92))] p-8 shadow-[0_22px_58px_rgba(17,44,60,0.08)] sm:p-10">
+                <span className="inline-flex rounded-full border border-[#d7b172]/28 bg-white px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#b68b4c]">
+                  Wichtiger Hinweis
                 </span>
-                <h3 className="mt-5 text-4xl leading-[0.94] font-semibold tracking-[-0.04em]">
-                  {content.ctaTitle}
+                <h3 className="mt-5 text-3xl leading-[0.96] font-semibold tracking-[-0.03em] text-[#0d2230]">
+                  {content.note.title}
                 </h3>
-                <p className="mt-5 max-w-2xl text-base leading-8 text-[#d7e2e8]">
-                  {content.ctaText}
+                <p className="mt-4 max-w-3xl text-base leading-8 text-[#5f6e79]">
+                  {content.note.text}
                 </p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <Link
-                    href={`/kontakt?thema=${encodeURIComponent(content.contactTopic)}`}
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d7b172] px-6 py-4 text-sm font-semibold text-[#08131b] shadow-[0_20px_45px_rgba(184,135,72,0.28)] transition hover:translate-y-[-1px] hover:bg-[#dfba7b]"
-                  >
-                    Anfrage senden
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/14 bg-white/8 px-6 py-4 text-sm font-semibold text-white transition hover:bg-white/12"
-                  >
-                    Weitere Leistungen
-                    <MoveRight className="h-4 w-4" />
-                  </Link>
-                </div>
+                {content.note.items?.length ? (
+                  <ul className="mt-5 grid gap-3 text-sm leading-7 text-[#45606f] lg:grid-cols-2">
+                    {content.note.items.map((item) => (
+                      <li key={item} className="flex gap-3">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#c59a5a]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </aside>
+            </Reveal>
+          ) : null}
+        </div>
+      </section>
+
+      {content.packagesSection ? (
+        <section className="bg-[#f3f8fb] py-24 sm:py-28">
+          <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
+            <Reveal>
+              <SectionHeading
+                eyebrow={content.packagesSection.eyebrow}
+                title={content.packagesSection.title}
+                description={content.packagesSection.description}
+                align="center"
+              />
+            </Reveal>
+
+            <div className="mt-16 grid gap-5 xl:grid-cols-3">
+              {content.packagesSection.packages.map((pkg, index) => {
+                const isRecommended = pkg.tone === "recommended";
+                const isPremium = pkg.tone === "premium";
+
+                return (
+                  <Reveal key={pkg.title} delay={index * 0.05}>
+                    <article
+                      className={[
+                        "flex h-full flex-col rounded-[2rem] p-8 sm:p-9",
+                        isPremium
+                          ? "border border-[#183f55]/12 bg-[#143649] text-[#f6efe5] shadow-[0_28px_80px_rgba(8,24,35,0.14)]"
+                          : isRecommended
+                            ? "border border-[#d7b172]/34 bg-white shadow-[0_28px_80px_rgba(184,135,72,0.12)] ring-1 ring-[#d7b172]/18"
+                            : "border border-[#0d2230]/8 bg-white shadow-[0_22px_58px_rgba(17,44,60,0.08)]",
+                      ].join(" ")}
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <span
+                          className={[
+                            "inline-flex rounded-full px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.28em]",
+                            isPremium
+                              ? "border border-white/14 bg-white/8 text-[#f2d5a3]"
+                              : isRecommended
+                                ? "border border-[#d7b172]/28 bg-[#fff7ea] text-[#b68b4c]"
+                                : "border border-[#183f55]/10 bg-[#eff7fb] text-[#b68b4c]",
+                          ].join(" ")}
+                        >
+                          {pkg.label}
+                        </span>
+                        <span
+                          className={[
+                            "text-right text-sm font-semibold",
+                            isPremium ? "text-[#f2d5a3]" : "text-[#b68b4c]",
+                          ].join(" ")}
+                        >
+                          {pkg.price}
+                        </span>
+                      </div>
+
+                      <h3
+                        className={[
+                          "mt-6 text-[2.2rem] leading-[0.94] font-semibold tracking-[-0.04em]",
+                          isPremium ? "text-[#f6efe5]" : "text-[#0d2230]",
+                        ].join(" ")}
+                      >
+                        {pkg.title}
+                      </h3>
+                      <p
+                        className={[
+                          "mt-5 text-base leading-8",
+                          isPremium ? "text-[#d7e2e8]" : "text-[#5f6e79]",
+                        ].join(" ")}
+                      >
+                        {pkg.description}
+                      </p>
+
+                      <div className="mt-6 space-y-3">
+                        {pkg.points.map((point) => (
+                          <div key={point} className="flex items-start gap-3">
+                            <span
+                              className={[
+                                "mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full",
+                                isPremium
+                                  ? "bg-white/12 text-[#f2d5a3]"
+                                  : "bg-[#eff7fb] text-[#b68b4c]",
+                              ].join(" ")}
+                            >
+                              <Check className="h-3.5 w-3.5" />
+                            </span>
+                            <p
+                              className={[
+                                "text-sm leading-7",
+                                isPremium ? "text-[#edf4f7]" : "text-[#45606f]",
+                              ].join(" ")}
+                            >
+                              {point}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <Link
+                        href={`/kontakt?thema=${encodeURIComponent(`${content.contactTopic} – ${pkg.label}`)}`}
+                        className={[
+                          "mt-8 inline-flex w-fit items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition",
+                          isPremium
+                            ? "border border-white/14 bg-white/8 text-white hover:bg-white/12"
+                            : isRecommended
+                              ? "bg-[#d7b172] text-[#08131b] shadow-[0_20px_45px_rgba(184,135,72,0.24)] hover:translate-y-[-1px] hover:bg-[#dfba7b]"
+                              : "border border-[#d7b172] text-[#b68b4c] hover:bg-[#d7b172] hover:text-[#08131b]",
+                        ].join(" ")}
+                      >
+                        {pkg.ctaLabel}
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </article>
+                  </Reveal>
+                );
+              })}
+            </div>
+
+            <Reveal delay={0.08}>
+              <div className="mt-10 rounded-[2rem] border border-[#0d2230]/8 bg-white p-8 shadow-[0_22px_58px_rgba(17,44,60,0.08)] sm:p-10">
+                <h3 className="text-3xl leading-[0.96] font-semibold tracking-[-0.03em] text-[#0d2230]">
+                  {content.packagesSection.followUpTitle}
+                </h3>
+                <p className="mt-4 max-w-2xl text-base leading-8 text-[#5f6e79]">
+                  {content.packagesSection.followUpText}
+                </p>
+                <Link
+                  href={`/kontakt?thema=${encodeURIComponent(content.contactTopic)}`}
+                  className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-[#d7b172] px-6 py-4 text-sm font-semibold text-[#08131b] shadow-[0_20px_45px_rgba(184,135,72,0.20)] transition hover:translate-y-[-1px] hover:bg-[#dfba7b]"
+                >
+                  {content.packagesSection.followUpButtonLabel}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </Reveal>
           </div>
+        </section>
+      ) : null}
+
+      <section className="bg-[#f8fcfe] pb-24 sm:pb-28">
+        <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
+          <Reveal>
+            <div className="rounded-[2rem] bg-[#143649] p-8 text-[#f6efe5] shadow-[0_28px_80px_rgba(8,24,35,0.14)] sm:p-10">
+              <span className="inline-flex rounded-full border border-white/14 bg-white/8 px-4 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#f2d5a3]">
+                Kontakt
+              </span>
+              <h3 className="mt-5 text-4xl leading-[0.94] font-semibold tracking-[-0.04em]">
+                {content.ctaTitle}
+              </h3>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-[#d7e2e8]">
+                {content.ctaText}
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href={`/kontakt?thema=${encodeURIComponent(content.contactTopic)}`}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d7b172] px-6 py-4 text-sm font-semibold text-[#08131b] shadow-[0_20px_45px_rgba(184,135,72,0.28)] transition hover:translate-y-[-1px] hover:bg-[#dfba7b]"
+                >
+                  Anfrage senden
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/14 bg-white/8 px-6 py-4 text-sm font-semibold text-white transition hover:bg-white/12"
+                >
+                  Weitere Leistungen
+                  <MoveRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
     </main>
