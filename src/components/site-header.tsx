@@ -23,6 +23,7 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const headerNavigation = navigation.filter((item) => item.label !== "Kontakt");
 
   const closeMobileMenu = () => {
     setMobileOpen(false);
@@ -92,7 +93,7 @@ export function SiteHeader() {
         </Link>
 
         <nav className={cn("hidden items-center gap-1.5 lg:flex", desktopNavClasses)}>
-          {navigation.map((item) => {
+          {headerNavigation.map((item) => {
             const active = isItemActive(pathname, item.href);
 
             return (
@@ -160,7 +161,7 @@ export function SiteHeader() {
       {mobileOpen ? (
         <div className="border-t border-white/8 bg-[rgba(7,19,27,0.96)] px-4 pb-5 pt-2 shadow-[0_28px_80px_rgba(0,0,0,0.4)] backdrop-blur-xl lg:hidden">
           <div className="mx-auto max-w-[1280px] space-y-2">
-            {navigation.map((item) => {
+            {headerNavigation.map((item) => {
               const expanded = openGroup === item.label;
 
               return (
