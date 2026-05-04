@@ -363,7 +363,7 @@ const bankContent: ServicePageContent = {
   processItems: [
     {
       title: "Situation und Wunsch klären",
-      text: "Wir besprechen, ob es um Kontoeröffnung, Hypothek, Finanzierung aus Deutschland oder eine Kombination mehrerer Schritte geht.",
+      text: "Wir besprechen, ob es um Kontoeröffnung, Hypothek, Finanzierung in Spanien oder eine Kombination mehrerer Schritte geht.",
     },
     {
       title: "Passenden Kontakt herstellen",
@@ -381,7 +381,7 @@ const bankContent: ServicePageContent = {
   ctaTitle:
     "Wenn Konto oder Finanzierung der nächste Schritt ist, stellen wir gern den direkten deutschsprachigen Kontakt in Málaga her.",
   ctaText:
-    "Über das Kontaktformular können Sie kurz angeben, ob es um Konto, Hypothek, Finanzierung aus Deutschland oder eine erste Orientierung geht. Danach lässt sich der Ablauf deutlich schneller sortieren.",
+    "Über das Kontaktformular können Sie kurz angeben, ob es um Konto, Hypothek, Finanzierung in Spanien oder eine erste Orientierung geht. Danach lässt sich der Ablauf deutlich schneller sortieren.",
 };
 
 const krankenversicherungContent: ServicePageContent = {
