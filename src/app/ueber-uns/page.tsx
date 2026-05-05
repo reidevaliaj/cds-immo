@@ -17,7 +17,7 @@ import Link from "next/link";
 const whyUsItems = [
   {
     title: "Deutschland verstehen, Spanien kennen",
-    text: "Wir kennen die Fragen, Unsicherheiten und Erwartungen deutscher Käufer und verbinden sie mit echter Erfahrung vor Ort an der Costa del Sol.",
+    text: "Wir kennen die Fragen, Unsicherheiten und Erwartungen deutscher Käufer und verbinden dieses Verständnis mit vielen Jahren echter Erfahrung an der Costa del Sol.",
     icon: Compass,
   },
   {
@@ -74,10 +74,10 @@ export default function AboutPage() {
 
             <Reveal delay={0.1} className="max-w-2xl">
               <p className="mt-6 text-base leading-8 text-[#e7f1f5] sm:text-xl">
-                CDS-IMMO verbindet die Erfahrung vor Ort an der Costa del Sol
-                mit der Perspektive deutscher Käufer, Auswanderer und
-                Interessenten. Genau daraus entsteht eine Begleitung, die nicht
-                beim Exposé aufhört.
+                Mehr Sonne. Mehr Freiheit. Ein neues Leben. Genau an diesem
+                Punkt beginnen für viele Kunden aber auch die größten Fragen:
+                Wem kann ich vertrauen, wie vermeide ich Fehler und was
+                passiert nach dem Kauf? Genau hier setzt CDS-IMMO an.
               </p>
             </Reveal>
           </div>
@@ -104,17 +104,34 @@ export default function AboutPage() {
                 Zwischen Deutschland, Málaga und echten Entscheidungen vor Ort.
               </h2>
               <p className="mt-6 text-base leading-8 text-[#5f6e79] sm:text-lg">
-                Viele Menschen beschäftigen sich nicht nur mit einer Immobilie,
-                sondern mit einem größeren Lebensschritt. Genau deshalb sollte
-                die Begleitung nicht wie eine reine Verkaufsstrecke wirken,
-                sondern wie ein klarer Partner für den Weg nach Spanien.
+                Viele Menschen beschäftigten sich nicht nur mit einer
+                Immobilie, sondern mit einem größeren Lebensschritt. Genau
+                deshalb sollte die Begleitung nie wie eine reine
+                Verkaufsstrecke wirken, sondern wie ein klarer Partner für den
+                Weg nach Spanien.
               </p>
               <p className="mt-5 text-base leading-8 text-[#5f6e79] sm:text-lg">
-                Edwin Kortler lebt seit über 25 Jahren in Málaga und kennt die
-                Region, die Abläufe und die Realität vor Ort aus langjähriger
-                Praxis. Veronica Rodriguez lebt und arbeitet seit vielen Jahren
-                an der Costa del Sol und bringt die operative Nähe zu
-                Immobilien, Prozessen und dem Alltag in Spanien mit ein.
+                Veronica Rodriguez lebte und arbeitete über viele Jahre in
+                Málaga und im Immobilienbereich an der Costa del Sol. Dadurch
+                gewann sie einen direkten Einblick in das, was Käufer vor Ort
+                wirklich erwartete, welche Fragen immer wieder aufkamen und an
+                welchen Punkten Unterstützung tatsächlich entscheidend wurde.
+              </p>
+              <p className="mt-5 text-base leading-8 text-[#5f6e79] sm:text-lg">
+                Edwin Kortler lebte über 25 Jahre in Málaga und arbeitete dort
+                in Tourismus, Vertrieb und Immobilien, davon über zehn Jahre
+                als Geschäftsführer einer deutschen Firma vor Ort. Aus dieser
+                Zeit entstand ein sehr klares Verständnis für den Markt, die
+                Unterschiede im Ablauf und die Realität hinter schönen
+                Exposés.
+              </p>
+              <p className="mt-5 text-base leading-8 text-[#5f6e79] sm:text-lg">
+                Heute begleitet CDS-IMMO Kunden von Deutschland aus mit
+                direkter Erreichbarkeit und gleichzeitig mit einem Netzwerk in
+                Spanien, das weiterhin an die entscheidenden Stellen vor Ort
+                angebunden ist. Genau diese Verbindung aus deutschem
+                Verständnis und spanischer Erfahrung ist der eigentliche
+                Vorteil.
               </p>
             </div>
           </Reveal>
@@ -135,22 +152,23 @@ export default function AboutPage() {
               <div className="grid gap-4 sm:grid-cols-2">
                 <article className="rounded-[1.7rem] border border-[#0d2230]/8 bg-white p-6 shadow-[0_18px_50px_rgba(17,44,60,0.06)]">
                   <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#b68b4c]">
-                    Edwin Kortler
+                    Veronica Rodriguez
                   </p>
                   <p className="mt-4 text-base leading-7 text-[#45606f]">
-                    Seit über 25 Jahren in Málaga, mit Erfahrung in Tourismus,
-                    Vertrieb, Immobilien und deutsch-spanischen Abläufen.
+                    Lebte und arbeitete über viele Jahre in Málaga und im
+                    Immobilienumfeld mit direktem Blick auf reale Abläufe und
+                    die Situation internationaler Käufer.
                   </p>
                 </article>
 
                 <article className="rounded-[1.7rem] border border-[#0d2230]/8 bg-white p-6 shadow-[0_18px_50px_rgba(17,44,60,0.06)]">
                   <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#b68b4c]">
-                    Veronica Rodriguez
+                    Edwin Kortler
                   </p>
                   <p className="mt-4 text-base leading-7 text-[#45606f]">
-                    Mit lokaler Erfahrung an der Costa del Sol und dem Blick
-                    für das, was Käufer und Auswanderer vor Ort wirklich
-                    brauchen.
+                    Lebte über 25 Jahre in Málaga und brachte Erfahrung aus
+                    Tourismus, Vertrieb, Immobilien und deutsch-spanischen
+                    Prozessen mit.
                   </p>
                 </article>
               </div>
@@ -165,7 +183,7 @@ export default function AboutPage() {
             <SectionHeading
               eyebrow="Warum wir"
               title="Weil bei diesem Schritt Vertrauen, Klarheit und echte Erfahrung wichtiger sind als laute Maklersprache."
-              description="Viele Kunden suchen keine anonyme Plattform, sondern einen Ansprechpartner, der zuhört, ehrlich einordnet und auch die Themen rund um Bank, Recht und Ankommen in Spanien mitdenkt."
+              description="Viele Kunden suchten keine anonyme Plattform, sondern einen Ansprechpartner, der zuhört, ehrlich einordnet und auch die Themen rund um Bank, Recht und Ankommen in Spanien mitdenkt. Genau daraus ist das heutige Konzept von CDS-IMMO entstanden."
               wide
             />
           </Reveal>
@@ -212,6 +230,13 @@ export default function AboutPage() {
                 Für viele Käufer geht es um mehr als einen Kaufpreis. Es geht
                 um Leben, Wohnen und Ankommen in Spanien. Genau deshalb denkt
                 CDS-IMMO weiter als eine klassische Maklerseite.
+              </p>
+              <p className="mt-5 text-base leading-8 text-[#d7e2e8] sm:text-lg">
+                Viele Kunden erlebten zuvor Sprachbarrieren,
+                Missverständnisse, unvollständige Betreuung oder Unsicherheit
+                bei Bank, Verträgen und Abläufen. Aus genau diesen Erfahrungen
+                entstand der Anspruch, nicht nur zu vermitteln, sondern den
+                gesamten Weg nachvollziehbar zu begleiten.
               </p>
             </div>
           </Reveal>

@@ -664,11 +664,11 @@ const dokumentenContent: ServicePageContent = {
         title: "Strukturierter Start in Spanien",
         price: "500 €",
         description:
-          "Der Einstieg für alle, die eine klare erste Ordnung in Kontakte, Unterlagen und wichtige Formalitäten bringen möchten.",
+          "Der strukturierte Einstieg für Kunden, die von Beginn an mit den richtigen Ansprechpartnern und klaren Abläufen arbeiten möchten und nicht jede wichtige Formalität selbst zusammensuchen wollen.",
         points: [
-          "Relevante Kontakte und erste Zuständigkeiten sauber einordnen",
-          "Wichtige Unterlagen, Formalitäten und nächste Schritte sortieren",
-          "Grundstruktur schaffen, bevor Einzelthemen chaotisch werden",
+          "Vermittlung relevanter Ansprechpartner für Bank, Rechtsanwälte, Krankenkasse und weitere wichtige Themen",
+          "Unterstützung beim Ausfüllen von Dokumenten und bei grundlegenden Formalitäten",
+          "Organisation wichtiger Unterlagen wie etwa Grundbuchauszüge und erste begleitende Koordination im Hintergrund",
         ],
         ctaLabel: "Anfrage starten",
         tone: "base",
@@ -678,8 +678,9 @@ const dokumentenContent: ServicePageContent = {
         title: "Exklusive Begleitung vor Ort",
         price: "ab 2.500 €",
         description:
-          "Die empfohlene Lösung für Kunden, die persönliche Begleitung in Spanien mit direkter Koordination vor Ort wünschen.",
+          "Die empfohlene Lösung für Kunden, die persönliche Begleitung in Spanien mit direkter Koordination vor Ort wünschen. Das Basispaket ist hier bereits enthalten.",
         points: [
+          "Alle Leistungen des Basispakets inklusive",
           "Persönliche Begleitung in Spanien, auch unabhängig vom Immobilienkauf",
           "Termine, Besichtigungen und wichtige Abläufe direkt abstimmen",
           "Vor-Ort-Unterstützung, wenn Entscheidungen nicht nur digital fallen sollen",
@@ -692,8 +693,9 @@ const dokumentenContent: ServicePageContent = {
         title: "Ganzheitliche Betreuung Spanien",
         price: "ab 5.000 €",
         description:
-          "Die umfassende Lösung für Kunden, die mehrere Tage Begleitung, zentrale Steuerung und maximale Entlastung wünschen.",
+          "Die umfassende Lösung für Kunden, die mehrere Tage Begleitung, zentrale Steuerung und maximale Entlastung wünschen. Das Basispaket ist hier ebenfalls enthalten.",
         points: [
+          "Alle Leistungen des Basispakets inklusive",
           "Mehrtägige persönliche Begleitung und priorisierte Unterstützung",
           "Bank, Recht, Objekt, Termine und Partner als Gesamtprozess koordinieren",
           "Entscheidungen ruhiger treffen, weil alle Fäden zentral zusammenlaufen",

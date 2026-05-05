@@ -6,6 +6,7 @@ import {
   services,
   siteSettings,
 } from "@/data/site-content";
+import { Phone } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -106,7 +107,22 @@ export function SiteFooter() {
                 </p>
               ))}
               <p>{siteSettings.email}</p>
-              <p>{siteSettings.phone}</p>
+              <div className="space-y-2">
+                <p className="flex items-center gap-2">
+                  <span className="text-base" aria-hidden="true">
+                    🇩🇪
+                  </span>
+                  <Phone className="h-4 w-4 text-[#f2d5a3]" />
+                  <span>{siteSettings.phone}</span>
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="text-base" aria-hidden="true">
+                    🇪🇸
+                  </span>
+                  <Phone className="h-4 w-4 text-[#f2d5a3]" />
+                  <span>{siteSettings.phoneSecondary}</span>
+                </p>
+              </div>
               <p>{siteSettings.location}</p>
             </div>
           </div>

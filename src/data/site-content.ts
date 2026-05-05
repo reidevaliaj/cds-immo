@@ -34,6 +34,7 @@ export const siteSettings = {
   siteUrl: "https://cds-immo.vercel.app",
   email: "info@cds-immo.de",
   phone: "+49 176 21843 103",
+  phoneSecondary: "+49 1578 7181 846",
   publicLocation: "Online-Beratung · Costa del Sol · Deutschland",
   location: "Costa del Sol · Online-Beratung zwischen Deutschland und Spanien",
   whatsapp: "https://wa.me/4917621843103",
