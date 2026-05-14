@@ -40,7 +40,7 @@ export const siteSettings = {
   whatsapp: "https://wa.me/4917621843103",
   instagram: "https://www.instagram.com/",
   facebook: "https://www.facebook.com/",
-  companyName: "Kortler & Rodriguez GbR / Costa del Sol Immobilien",
+  companyName: "Costa del Sol Immobilien, Rodriguez Arellano & Kortler GbR",
   responsible: "Veronica Rodriguez und Edwin Kortler",
   addressLines: ["Potthöferei 19", "44388 Dortmund", "Deutschland"],
 };

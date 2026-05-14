@@ -61,7 +61,7 @@ export function PropertyBrowser({
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Ort, Preis, Projekt oder Schlagwort suchen"
+                placeholder="Ort, Region, Preis, Projekt oder Schlagwort suchen"
                 className="w-full bg-transparent text-base text-[#15384d] outline-none placeholder:text-[#6d8595]"
               />
             </div>
@@ -102,6 +102,10 @@ export function PropertyBrowser({
         </div>
 
         <p className="mt-5 text-sm leading-7 text-[#5f7380]">
+          Suche funktioniert auch über Regionen wie Costa del Sol oder Costa Blanca.
+        </p>
+
+        <p className="mt-2 text-sm leading-7 text-[#5f7380]">
           {filteredProperties.length} Immobilien passen aktuell zu Ihrer Suche.
         </p>
       </div>

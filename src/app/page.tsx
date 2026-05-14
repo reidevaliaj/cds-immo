@@ -77,7 +77,7 @@ export default async function Home() {
 
             <Reveal delay={0.05} className="max-w-3xl">
               <h1 className="mt-6 text-[3rem] leading-[0.94] font-semibold tracking-[-0.04em] text-balance text-[#21485e] sm:text-[3.8rem] lg:text-[4.85rem]">
-                Von Deutschland an die Costa del Sol - ohne Unsicherheit.
+                Von Deutschland an die Costa del Sol – ohne Unsicherheit.
               </h1>
             </Reveal>
 
@@ -88,6 +88,16 @@ export default async function Home() {
                 auch bei Finanzierung, Recht, Behörden und der Organisation
                 Ihres neuen Lebensabschnitts.
               </p>
+            </Reveal>
+
+            <Reveal delay={0.12}>
+              <Link
+                href="/costa-blanca"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#b58949] transition hover:text-[#a97d3f]"
+              >
+                Jetzt auch ausgewählte Immobilien an der Costa Blanca entdecken
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </Reveal>
 
             <Reveal

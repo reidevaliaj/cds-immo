@@ -131,7 +131,8 @@ export function SiteFooter() {
         <div className="mt-14 border-t border-white/12 pt-6 text-sm text-[#dcecf3]">
           <p>
             {siteSettings.companyName} · Deutscher Ansprechpartner für
-            Immobilien, Auswandern und Leistungen an der Costa del Sol.
+            Immobilien, Auswandern und Leistungen an der Costa del Sol –
+            jetzt auch mit ausgewählten Immobilien an der Costa Blanca.
           </p>
         </div>
       </div>

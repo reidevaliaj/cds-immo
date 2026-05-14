@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Costa del Sol Immobilien",
   },
   description:
-    "Costa del Sol Immobilien: Häuser, Wohnungen, Neubauprojekte und deutschsprachige Begleitung für Auswandern, Bank, Versicherung und wichtige Schritte in Andalusien.",
+    "Costa del Sol Immobilien: Häuser, Wohnungen, Neubauprojekte und deutschsprachige Begleitung an der Costa del Sol – jetzt auch mit ausgewählten Immobilien an der Costa Blanca.",
 };
 
 export default function RootLayout({

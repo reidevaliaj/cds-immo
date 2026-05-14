@@ -22,8 +22,8 @@ export default async function ImmobilienPage({
           <Reveal>
             <SectionHeading
               eyebrow="Immobilien"
-              title="Aktuelle Häuser, Wohnungen und Neubauprojekte an der Costa del Sol."
-              description="Die Suche bleibt bewusst einfach: erst alle Immobilien sehen und dann nach Objektgruppe, Ort oder Schlagwort filtern."
+              title="Aktuelle Häuser, Wohnungen und Neubauprojekte an der Costa del Sol – jetzt auch mit ausgewählten Angeboten an der Costa Blanca."
+              description="Die Suche bleibt bewusst einfach: erst alle Immobilien sehen und dann nach Objektgruppe, Ort, Region oder Schlagwort filtern."
               wide
             />
           </Reveal>
