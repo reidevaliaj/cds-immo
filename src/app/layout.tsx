@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   },
   description:
     "Costa del Sol Immobilien: Häuser, Wohnungen, Neubauprojekte und deutschsprachige Begleitung an der Costa del Sol – jetzt auch mit ausgewählten Immobilien an der Costa Blanca.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
