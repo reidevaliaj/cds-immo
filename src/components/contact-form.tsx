@@ -11,6 +11,14 @@ type ContactFormProps = {
 };
 
 const defaultTopic = "Allgemeine Anfrage";
+const baseTopicOptions = [
+  defaultTopic,
+  "Immobilien",
+  "Costa Blanca",
+  "Auswandern nach Spanien",
+  "Ratgeber",
+  ...servicePages.map((page) => page.title),
+];
 
 function buildMailtoBody(values: Record<string, string>) {
   return [
@@ -32,6 +40,9 @@ export function ContactForm({
   const [topic, setTopic] = useState(initialTopic?.trim() || defaultTopic);
   const [consent, setConsent] = useState(false);
   const [error, setError] = useState("");
+  const topicOptions = Array.from(
+    new Set([...baseTopicOptions, initialTopic?.trim() || ""]),
+  ).filter(Boolean);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -131,22 +142,18 @@ export function ContactForm({
         <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.22em] text-[#7a8d98]">
           Thema *
         </label>
-        <input
+        <select
           name="topic"
-          type="text"
           value={topic}
           onChange={(event) => setTopic(event.target.value)}
           className={inputClasses}
-          list="contact-topics"
-          placeholder={defaultTopic}
-        />
-        <datalist id="contact-topics">
-          <option value="Allgemeine Anfrage" />
-          <option value="Immobilien" />
-          {servicePages.map((page) => (
-            <option key={page.slug} value={page.title} />
+        >
+          {topicOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
           ))}
-        </datalist>
+        </select>
       </div>
 
       <div className="mt-4">
