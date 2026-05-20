@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 const keyReasons = [
   {
     title: "Mehr Auswahl am Mittelmeer",
-    text: "Die Costa Blanca erweitert den Suchraum für Kunden, die neben der Costa del Sol noch eine zweite starke Küstenregion prüfen möchten.",
+    text: "Die Costa Blanca bietet Käufern eine starke Küstenregion mit vielseitigen Wohnlagen, attraktiven Orten und guten Möglichkeiten für Zweitwohnsitz, Auswandern oder Investition.",
     icon: Building2,
   },
   {
@@ -48,7 +48,7 @@ const costaBlancaHighlights = [
 ];
 
 const buyerScenarios = [
-  "Wenn Sie neben der Costa del Sol bewusst eine zweite Küstenregion mit in die Auswahl nehmen möchten",
+  "Wenn Sie bewusst eine mediterrane Küstenregion mit guter Infrastruktur und vielseitigen Wohnlagen suchen",
   "Wenn Preis, Lage oder Lebensstil an der Costa Blanca besser zu Ihrem persönlichen Plan passen",
   "Wenn Sie bereits wissen, dass Alicante, Benidorm, Altea, Calpe oder Dénia für Sie interessant sein könnten",
 ];
@@ -84,7 +84,7 @@ export default async function CostaBlancaPage() {
 
             <Reveal delay={0.05} className="max-w-3xl">
               <h1 className="mt-6 text-[3rem] leading-[0.94] font-semibold tracking-[-0.04em] text-balance text-white sm:text-[3.8rem] lg:text-[4.8rem]">
-                Von Deutschland an die Costa del Sol – ohne Unsicherheit.
+                Von Deutschland an die Costa Blanca – ohne Unsicherheit.
               </h1>
             </Reveal>
 
@@ -97,11 +97,10 @@ export default async function CostaBlancaPage() {
 
             <Reveal delay={0.15} className="max-w-2xl">
               <p className="mt-5 text-base leading-8 text-[#dce8ed] sm:text-[1.06rem]">
-                Für Käufer, die neben der Costa del Sol auch an der Costa
-                Blanca suchen möchten, entsteht damit eine zweite klare
-                Möglichkeit am Mittelmeer – mit derselben deutschsprachigen
-                Begleitung, derselben Struktur und derselben ruhigen
-                Einordnung.
+                Für Käufer, die an der Costa Blanca suchen möchten, entsteht
+                hier eine klare Möglichkeit am Mittelmeer – mit
+                deutschsprachiger Begleitung, ruhiger Einordnung und einem
+                strukturierten Weg zu den passenden Immobilien.
               </p>
             </Reveal>
 
@@ -140,9 +139,9 @@ export default async function CostaBlancaPage() {
         <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
           <Reveal>
             <SectionHeading
-              eyebrow="Costa Blanca als Ergänzung"
-              title="Eine weitere starke Küstenregion für Käufer, die am Mittelmeer nicht nur in eine Richtung denken möchten."
-              description="Die Costa Blanca wird nicht als beliebige Erweiterung eingebunden, sondern als zusätzliche Region für Anfragen, bei denen Lage, Lebensstil oder Preisniveau besser zu dieser Küste passen."
+              eyebrow="Costa Blanca"
+              title="Eine starke Küstenregion für Käufer, die Sonne, Meer und einen klaren Neustart in Spanien suchen."
+              description="Die Costa Blanca verbindet mediterranes Lebensgefühl mit bekannten Küstenorten, guter Infrastruktur und Immobilienmöglichkeiten für unterschiedliche Lebensmodelle."
               wide
             />
           </Reveal>
@@ -179,15 +178,16 @@ export default async function CostaBlancaPage() {
                 Was die Region attraktiv macht
               </span>
               <h2 className="mt-6 text-4xl leading-[0.95] font-semibold tracking-[-0.04em] text-[#17394d] sm:text-5xl">
-                Zwischen Küstenleben, Alltag und einer anderen Energie als an
-                der Costa del Sol.
+                Zwischen Küstenleben, Alltag und einem mediterranen Lebensstil
+                mit eigener Identität.
               </h2>
               <p className="mt-6 text-base leading-8 text-[#557388] sm:text-lg">
                 Die Costa Blanca spricht Kunden an, die Sonne, Meer und
                 Spanien suchen, aber ihren Fokus noch einmal breiter setzen
-                möchten. Nicht jede Immobilie muss automatisch an die Costa del
-                Sol passen – manchmal liegt die bessere Lösung bewusst in einer
-                zweiten Region.
+                möchten. Manche suchen ruhiger, andere urbaner, manche mit
+                klarerem Preisrahmen oder mehr Flexibilität bei Lage und
+                Lebensstil – genau dafür bietet die Region viele passende
+                Möglichkeiten.
               </p>
             </div>
           </Reveal>
@@ -332,8 +332,8 @@ export default async function CostaBlancaPage() {
               </h3>
               <p className="mt-5 text-base leading-8 text-[#d7e2e8]">
                 Schreiben Sie uns kurz, ob es um Zweitwohnsitz, Auswandern,
-                Anlage oder eine alternative Küstenregion zur Costa del Sol
-                geht. Danach lässt sich die Suche deutlich klarer eingrenzen.
+                Anlage oder den passenden Standort an der Costa Blanca geht.
+                Danach lässt sich die Suche deutlich klarer eingrenzen.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
