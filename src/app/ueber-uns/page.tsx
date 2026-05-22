@@ -118,17 +118,6 @@ export default function AboutPage() {
                 welchen Punkten Unterstützung tatsächlich entscheidend wurde.
               </p>
 
-              <div className="mt-8 overflow-hidden rounded-[2rem] border border-[#183f55]/10 shadow-[0_24px_70px_rgba(57,108,134,0.10)]">
-                <div className="relative aspect-[5/4] select-none">
-                  <Image
-                    src={aboutTeamImage}
-                    alt="Veronica Rodriguez und Edwin Kortler"
-                    fill
-                    className="pointer-events-none object-cover object-center"
-                  />
-                </div>
-              </div>
-
               <p className="mt-5 text-base leading-8 text-[#5f6e79] sm:text-lg">
                 Edwin Kortler lebte über 25 Jahre in Málaga und arbeitete dort
                 in Tourismus, Vertrieb und Immobilien, davon über zehn Jahre
@@ -150,6 +139,17 @@ export default function AboutPage() {
 
           <Reveal delay={0.05}>
             <div className="space-y-5">
+              <div className="overflow-hidden rounded-[2rem] border border-[#183f55]/10 shadow-[0_24px_70px_rgba(57,108,134,0.10)]">
+                <div className="relative aspect-[5/4] select-none">
+                  <Image
+                    src={aboutTeamImage}
+                    alt="Veronica Rodriguez und Edwin Kortler"
+                    fill
+                    className="pointer-events-none object-cover object-center"
+                  />
+                </div>
+              </div>
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <article className="rounded-[1.7rem] border border-[#0d2230]/8 bg-white p-6 shadow-[0_18px_50px_rgba(17,44,60,0.06)]">
                   <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#b68b4c]">
